@@ -1,39 +1,27 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
-
+import contactWandaImg from "../assets/img/contactWanda.png";
+import "animate.css";
+import TrackVisibility from "react-on-screen";
+import ListGroup from "react-bootstrap/ListGroup";
+import {
+  TreeFill,
+  Whatsapp,
+  FileEarmarkPersonFill,
+  EnvelopeAtFill,
+} from "react-bootstrap-icons";
 
 export const Contact = () => {
-  const formInitialDetails = {
-    firstName: '',
-    lastName: '',
-    message: ''
-  }
-  const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState('Send');
-
-
-  const onFormUpdate = (category, value) => {
-      setFormDetails({
-        ...formDetails,
-        [category]: value
-      })
-  }
+  const [buttonText, setButtonText] = useState("Send");
 
   const buildWhatsappMessage = () => {
-    const { firstName, lastName, message } = formDetails;
-    return `Hi, I'm ${firstName} ${lastName}. ${message}`;
-  }
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const url = 'https://api.whatsapp.com/send/?phone=51984784772&text='+ 
-    buildWhatsappMessage()+'&type=phone_number&app_absent=0';
-    setFormDetails(formInitialDetails);
-    window.open(url, '_blank');
+    const message = "Hello 👋🏻 ";
+    return (
+      "https://api.whatsapp.com/send/?phone=17787934659&text=" +
+      message +
+      "&type=phone_number&app_absent=0"
+    );
   };
 
   return (
@@ -42,35 +30,68 @@ export const Contact = () => {
         <Row className="align-items-center">
           <Col size={12} md={6}>
             <TrackVisibility>
-              {({ isVisible }) =>
-                <img className={isVisible ? "animate__animated animate__zoomIn" : ""} src={contactImg} alt="Contact Us"/>
-              }
+              {({ isVisible }) => (
+                <img
+                  className={
+                    isVisible ? "animate__animated animate__zoomIn" : ""
+                  }
+                  src={contactWandaImg}
+                  alt="Contact Us"
+                />
+              )}
             </TrackVisibility>
           </Col>
           <Col size={12} md={6}>
             <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <h2>Get In Touch</h2>
-                <form onSubmit={handleSubmit}>
-                  <Row>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.lasttName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
-                    </Col>
-                    <Col size={12} className="px-1">
-                      <textarea rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
-                      <button type="submit"><span>{buttonText}</span></button>
-                    </Col>
-                  </Row>
-                </form>
-              </div>}
+              {({ isVisible }) => (
+                <div
+                  className={
+                    isVisible ? "animate__animated animate__fadeIn" : ""
+                  }
+                >
+                  <h2>Let’s ready to achieve your goals 🎯</h2>
+
+                  <ListGroup>
+                    <ListGroup.Item
+                      action
+                      href="https://linktr.ee/eduzsantillan"
+                      target="_blank"
+                      variant="dark"
+                    >
+                      <TreeFill size={40} /> <span>Linktree</span>
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      href={buildWhatsappMessage()}
+                      target="_blank"
+                      variant="dark"
+                    >
+                      <Whatsapp size={40} /> <span>Send a message</span>
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      href="mailto:eduzsantillan@gmail.com"
+                      target="_blank"
+                      variant="dark"
+                    >
+                      <EnvelopeAtFill size={40} /> <span>Send a mail</span>
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      href="https://drive.google.com/file/d/1b0b-a4E3JdUMUdFAasg-ig31bQaC6W5X/view?usp=sharing"
+                      target="_blank"
+                      variant="dark"
+                    >
+                      <FileEarmarkPersonFill size={40} />{" "}
+                      <span>Download Resume</span>
+                    </ListGroup.Item>
+                  </ListGroup>
+                </div>
+              )}
             </TrackVisibility>
           </Col>
         </Row>
       </Container>
     </section>
-  )
-}
+  );
+};
