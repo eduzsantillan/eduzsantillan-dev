@@ -1,81 +1,99 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
-import meter4 from "../assets/img/meter4.svg";
-import meter5 from "../assets/img/meter5.svg";
-import meter6 from "../assets/img/meter6.svg";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export const Skills = () => {
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+  const skillCategories = [
+    {
+      title: "Programming Languages",
+      primary: ["Java", "JavaScript", "SQL"],
+      secondary: ["C#", "Visual Basic", "Python"],
+      icon: "💻"
     },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+    {
+      title: "Frameworks/Libraries",
+      primary: ["Spring Framework", "Spring Boot", "ReactJS", "ExpressJS", "NextJS"],
+      secondary: ["Angular"],
+      icon: "🛠️"
     },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
+    {
+      title: "Databases",
+      primary: ["PostgreSQL", "MongoDB", "Aurora", "MySQL", "Oracle", "SQLServer"],
+      icon: "🗄️"
     },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
+    {
+      title: "Tools",
+      primary: ["AWS", "GCP", "Firebase", "ElasticSearch", "Docker", "Kubernetes", "Kafka"],
+      icon: "⚙️"
     },
-  };
+    {
+      title: "Practices",
+      primary: ["Scrum", "TDD", "SOLID Principles", "Software Architecture"],
+      icon: "📋"
+    }
+  ];
 
   return (
     <section className="skill" id="skills">
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="skill-bx wow zoomIn">
+            <motion.div 
+              className="skill-bx wow zoomIn"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <h2>Skills</h2>
               <p>
-                Experienced Software Engineer with a proven track record in
-                analyzing and developing high-quality software solutions.
-                Demonstrated ability to gather business requirements, customer
-                needs and operations improvement to translate them to tech
-                assets. Focus on give value and business goal oriented. Excited
-                to work on new projects and contribute to a team's success.
+                Experienced Software Engineer with a proven track record in developing high-quality software solutions. 
+                Focused on delivering value through modern technologies and best practices.
               </p>
-              <Carousel
-                responsive={responsive}
-                autoPlay
-                autoPlaySpeed={1000}
-                infinite={true}
-                className="owl-carousel owl-theme skill-slider"
-              >
-                <div className="item">
-                  <img src={meter1} alt="Image" />
-                  <h5>Java Development</h5>
-                </div>
-                <div className="item">
-                  <img src={meter3} alt="Image" />
-                  <h5>Amazon Web Services</h5>
-                </div>
-                <div className="item">
-                  <img src={meter6} alt="Image" />
-                  <h5>JavaScript</h5>
-                </div>
-                <div className="item">
-                  <img src={meter2} alt="" />
-                  <h5>Spring Framework</h5>
-                </div>
-
-                <div className="item">
-                  <img src={meter4} alt="Image" />
-                  <h5>.NET Framework</h5>
-                </div>
-                <div className="item">
-                  <img src={meter5} alt="Image" />
-                  <h5>Devops</h5>
-                </div>
-              </Carousel>
-            </div>
+              
+              <div className="skills-grid">
+                {skillCategories.map((category, index) => (
+                  <motion.div
+                    key={category.title}
+                    className="skill-card"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="skill-card-header">
+                      <span className="skill-icon">{category.icon}</span>
+                      <h3>{category.title}</h3>
+                    </div>
+                    <div className="skill-card-content">
+                      <div className="primary-skills">
+                        {category.primary.map((skill, i) => (
+                          <motion.span
+                            key={skill}
+                            className="skill-tag"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: i * 0.1 }}
+                          >
+                            {skill}
+                          </motion.span>
+                        ))}
+                      </div>
+                      {category.secondary && (
+                        <div className="secondary-skills">
+                          <p>Also experienced with:</p>
+                          {category.secondary.map((skill) => (
+                            <span key={skill} className="skill-tag secondary">
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

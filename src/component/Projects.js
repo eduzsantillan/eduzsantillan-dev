@@ -6,8 +6,13 @@ import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export const Projects = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState(0);
+
   const projects = [
     {
       title: "VideoBlog App",
@@ -39,6 +44,28 @@ export const Projects = () => {
     },
   ];
 
+  useEffect(() => {
+    const loadImages = async () => {
+      const imagePromises = projects.map((project) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = project.imgUrl;
+          img.onload = () => {
+            setLoadedImages((prev) => prev + 1);
+            resolve();
+          };
+        });
+      });
+
+      await Promise.all(imagePromises);
+      setIsLoading(false);
+    };
+
+    loadImages();
+  }, []);
+
+  const loadingProgress = (loadedImages / projects.length) * 100;
+
   return (
     <section className="project" id="projects">
       <Container>
@@ -46,28 +73,48 @@ export const Projects = () => {
           <Col size={12}>
             <TrackVisibility>
               {({ isVisible }) => (
-                <div
-                  className={
-                    isVisible ? "animate__animated animate__fadeIn" : ""
-                  }
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className={isVisible ? "animate__animated animate__fadeIn" : ""}
                 >
                   <h2>Projects</h2>
                   <p>
                     Personal and independents projects besides work experience.
                     Hover over the cards to see used techs and tools.
                   </p>
-                  <Row>
-                    {projects.map((project, index) => {
-                      return <ProjectCard key={index} {...project} />;
-                    })}
-                  </Row>
-                </div>
+                  
+                  {isLoading ? (
+                    <div className="loading-container">
+                      <motion.div 
+                        className="loading-bar"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${loadingProgress}%` }}
+                        transition={{ duration: 0.5 }}
+                      />
+                      <p>Loading projects... {Math.round(loadingProgress)}%</p>
+                    </div>
+                  ) : (
+                    <Row>
+                      {projects.map((project, index) => {
+                        return <ProjectCard key={index} index={index} {...project} />;
+                      })}
+                    </Row>
+                  )}
+                </motion.div>
               )}
             </TrackVisibility>
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src={colorSharp2}></img>
+      <motion.img 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+        transition={{ duration: 1 }}
+        className="background-image-right" 
+        src={colorSharp2}
+      />
     </section>
   );
 };

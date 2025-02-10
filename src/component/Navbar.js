@@ -4,6 +4,7 @@ import logo from "../assets/img/logo.png";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
+import navIcon4 from "../assets/img/nav-icon4.svg";
 import { HashLink } from "react-router-hash-link";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -77,22 +78,35 @@ const NavBar = () => {
                 <a
                   href="https://www.linkedin.com/in/eduzuniga/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <img src={navIcon1} alt="" />
+                  <img src={navIcon1} alt="LinkedIn" />
                 </a>
                 <a
                   href="https://www.youtube.com/channel/UClYgKxDslmfUmGoVIYkTPHw"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <img src={navIcon2} alt="" />
+                  <img src={navIcon2} alt="YouTube" />
                 </a>
-                <a href="https://github.com/eduzsantillan" target="_blank">
-                  <img src={navIcon3} alt="" />
+                <a 
+                  href="https://github.com/eduzsantillan" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={navIcon3} alt="GitHub" />
+                </a>
+                <a 
+                  href="https://gitlab.com/eduzsantillan" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={navIcon4} alt="GitLab" />
                 </a>
               </div>
               <HashLink to="#connect">
                 <button className="vvd">
-                  <span>Let’s Connect</span>
+                  <span>Let's Connect</span>
                 </button>
               </HashLink>
             </span>
