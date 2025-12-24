@@ -1,22 +1,33 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { LanguageProvider } from "./context/LanguageContext";
 import NavBar from "./component/Navbar";
 import Banner from "./component/Banner";
-import { Skills } from "./component/Skills";
-import { Footer } from "./component/Footer";
+import { TrustBar } from "./component/TrustBar";
+import { ResultsStrip } from "./component/ResultsStrip";
+import { Services } from "./component/Services";
+import { CaseStudies } from "./component/CaseStudies";
+import { Process } from "./component/Process";
+import { About } from "./component/About";
 import { Contact } from "./component/Contact";
-import { Projects } from "./component/Projects";
+import { Footer } from "./component/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar></NavBar>
-      <Banner></Banner>
-      <Skills></Skills>
-      <Projects></Projects>
-      <Contact></Contact>
-      <Footer></Footer>
-    </div>
+    <LanguageProvider>
+      <div className="App">
+        <NavBar />
+        <Banner />
+        <TrustBar />
+        <ResultsStrip />
+        <Services />
+        <CaseStudies />
+        <Process />
+        <About />
+        <Contact />
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

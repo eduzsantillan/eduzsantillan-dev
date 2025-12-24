@@ -1,100 +1,106 @@
-import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../assets/img/banner-img.png";
-import { ArrowRightCircle, FilePersonFill } from "react-bootstrap-icons";
-import "animate.css";
-import TrackVisibility from "react-on-screen";
+import {
+  ArrowRight,
+  ChevronDown,
+  CheckCircleFill,
+} from "react-bootstrap-icons";
+import { motion } from "framer-motion";
+import { getContent } from "../content/siteContent";
+import { useLanguage } from "../context/LanguageContext";
 
 const Banner = () => {
-  const [loopNum, setLoopNum] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [text, setText] = useState("");
-  const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const [index, setIndex] = useState(1);
-  const toRotate = ["Software engineer", "Instructor", "Tech Savvy"];
-  const period = 2000;
+  const { language } = useLanguage();
+  const { hero } = getContent(language);
 
-  useEffect(() => {
-    let ticker = setInterval(() => {
-      tick();
-    }, delta);
+  const scrollToCaseStudies = () => {
+    document
+      .getElementById("case-studies")
+      ?.scrollIntoView({ behavior: "smooth" });
+  };
 
-    return () => {
-      clearInterval(ticker);
-    };
-  }, [text]);
-
-  const tick = () => {
-    let i = loopNum % toRotate.length;
-    let fullText = toRotate[i];
-    let updatedText = isDeleting
-      ? fullText.substring(0, text.length - 1)
-      : fullText.substring(0, text.length + 1);
-
-    setText(updatedText);
-
-    if (isDeleting) {
-      setDelta((prevDelta) => prevDelta / 2);
-    }
-
-    if (!isDeleting && updatedText === fullText) {
-      setIsDeleting(true);
-      setIndex((prevIndex) => prevIndex - 1);
-      setDelta(period);
-    } else if (isDeleting && updatedText === "") {
-      setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-      setIndex(1);
-      setDelta(200);
-    } else {
-      setIndex((prevIndex) => prevIndex + 1);
-    }
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="banner" id="home">
+      <div className="banner-gradient-orb banner-orb-1" />
+      <div className="banner-gradient-orb banner-orb-2" />
+
       <Container>
-        <Row className="aligh-items-center">
-          <Col xs={12} md={6} xl={5}>
-            <TrackVisibility>
-              {({ isVisible }) => (
-                <div
-                  className={
-                    isVisible ? "animate__animated animate__zoomIn" : ""
-                  }
-                >
-                  <img src={headerImg} alt="Header Img" />
-                </div>
-              )}
-            </TrackVisibility>
-          </Col>
-          <Col xs={12} md={6} xl={7}>
-            <TrackVisibility>
-              {({ isVisible }) => (
-                <div
-                  className={
-                    isVisible ? "animate__animated animate__fadeIn" : ""
-                  }
-                >
-                  <h1>
-                    {`Hi! 🖖🏻 I'm Eduardo 👨🏻‍💻`}{" "}
-                    <span className="txt-rotate" dataPeriod="1000">
-                      <span className="wrap">{text}</span>
-                    </span>
-                  </h1>
-                  <button
-                    onClick={() =>
-                      window.open("https://linktr.ee/eduzsantillan", "_blank")
-                    }
+        <Row className="align-items-center justify-content-center">
+          <Col xs={12} lg={10} xl={9}>
+            <motion.div
+              className="banner-content"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <motion.span
+                className="hero-tag"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                {hero.tag}
+              </motion.span>
+
+              <h1>
+                <span className="headline-gradient">{hero.headline}</span>
+              </h1>
+
+              <p className="hero-subheadline">{hero.subheadline}</p>
+
+              <p className="hero-ideal-for">{hero.idealFor}</p>
+
+              <motion.div
+                className="proof-chips"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                {hero.proofChips.map((chip, index) => (
+                  <motion.div
+                    key={index}
+                    className="proof-chip"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
                   >
-                    Let’s Connect <ArrowRightCircle size={25} />
-                  </button>
-                </div>
-              )}
-            </TrackVisibility>
+                    <CheckCircleFill className="proof-icon" />
+                    <span>{chip}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                className="hero-ctas"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                <button className="primary-cta" onClick={scrollToContact}>
+                  <span>{hero.primaryCta}</span>
+                  <ArrowRight size={20} />
+                </button>
+                <button className="secondary-cta" onClick={scrollToCaseStudies}>
+                  <span>{hero.secondaryCta}</span>
+                  <ChevronDown size={18} />
+                </button>
+              </motion.div>
+            </motion.div>
           </Col>
         </Row>
       </Container>
+
+      <motion.div
+        className="scroll-indicator"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
+        <ChevronDown size={24} />
+      </motion.div>
     </section>
   );
 };
