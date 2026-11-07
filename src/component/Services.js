@@ -1,55 +1,8 @@
-import { Container, Row, Col } from "react-bootstrap";
-import { motion } from "framer-motion";
-import { getContent } from "../content/siteContent";
+import { getContent, inquiryLink } from "../content/siteContent";
 import { useLanguage } from "../context/LanguageContext";
-
-export const Services = () => {
+import { Icon, Reveal, SectionHeading } from "./UI";
+export function Services() {
   const { language } = useLanguage();
   const { services } = getContent(language);
-
-  return (
-    <section className="services" id="services">
-      <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2>{services.title}</h2>
-          <p className="services-intro">{services.intro}</p>
-        </motion.div>
-
-        <Row className="services-grid">
-          {services.items.map((service, index) => (
-            <Col key={index} xs={12} md={6} lg={4}>
-              <motion.div
-                className="service-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="service-icon">{service.icon}</div>
-                <h3>{service.title}</h3>
-                <span className="service-subtitle">{service.subtitle}</span>
-                <p>{service.description}</p>
-                <div className="service-deliverables">
-                  <span className="deliverables-label">
-                    {services.deliverablesLabel}
-                  </span>
-                  <ul>
-                    {service.deliverables.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </section>
-  );
-};
+  return <section id="consulting" className="services light-section section-pad"><span id="services" className="anchor-alias" /><div className="container"><SectionHeading {...services} light /><div className="services-grid">{services.items.map((item, index) => <Reveal key={item.id} delay={index * 80} className="service-card"><div className="service-top"><Icon name={item.id} size={30} /><span>{item.number}</span></div><p className="service-name">{item.short}</p><h3>{item.title}</h3><p className="service-description">{item.description}</p><div className="deliverables"><p className="eyebrow">{services.deliverables}</p><ul>{item.deliverables.map(text => <li key={text}><Icon name="check" size={14} />{text}</li>)}</ul></div><a className="service-link" href={inquiryLink(language)} aria-label={`${services.cta}: ${item.short}`}><span>{services.cta}</span><Icon name="diagonal" size={19} /></a></Reveal>)}</div><p className="scope-note"><span className="status-dot" />{services.scope}</p></div></section>;
+}

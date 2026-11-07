@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#101411"/>
+<path d="M80 120H1120M80 550H1120" stroke="#36442d"/>
+<text x="80" y="90" fill="#c5eaa5" font-family="IBM Plex Sans, sans-serif" font-size="28" font-weight="700">EDUARDO ZUÑIGA</text>
+<text x="80" y="218" fill="#bbc8b2" font-family="IBM Plex Sans, sans-serif" font-size="22">SENIOR BACKEND ENGINEER &amp; INDEPENDENT CONSULTANT</text>
+<text x="75" y="320" fill="#f0f0e7" font-family="IBM Plex Mono, monospace" font-size="72" letter-spacing="-3">Complex systems.</text>
+<text x="75" y="411" fill="#f0f0e7" font-family="IBM Plex Mono, monospace" font-size="72" letter-spacing="-3">Clear <tspan fill="#c5eaa5" font-family="IBM Plex Mono, monospace">solutions.</tspan></text>
+<text x="80" y="490" fill="#bbc8b2" font-family="IBM Plex Sans, sans-serif" font-size="24">Java / Spring Boot · Payments · Identity · Enterprise</text>
+<text x="80" y="592" fill="#c5eaa5" font-family="IBM Plex Sans, sans-serif" font-size="22">eduzsantillan.dev</text>
+</svg>

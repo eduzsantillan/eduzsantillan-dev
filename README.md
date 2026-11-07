@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Eduardo Zuñiga — personal website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page React 18 portfolio with distinct engineering and independent consulting paths. The existing Create React App setup and deployment provider are retained; no backend or analytics service is added.
 
-## Available Scripts
+## Local development
 
-In the project directory, you can run:
+Use the Node 20 version declared in `package.json`.
 
-### `npm start`
+```sh
+npm ci
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Checks
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```sh
+CI=true npm test -- --watchAll=false --watchman=false --runInBand
+CI=true npm run build
+```
 
-### `npm test`
+The build includes the existing ESLint checks. This JavaScript project has no separate typecheck or lint script. Disabling Watchman keeps the test run independent of a machine-specific Watchman service.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Content and navigation
 
-### `npm run build`
+- `src/content/siteContent.js`: English and Spanish copy, contact addresses, professional links and CV paths.
+- `src/context/LanguageContext.js`: English default, saved language preference and localized document metadata.
+- Anchors: `#home`, `#experience`, `#consulting`, `#work`, `#process`, `#contact`. Legacy section anchors remain available.
+- `/?intent=role#contact` and `/?intent=project#contact`: preselect the inquiry type.
+- `public/assets/`: finalized engineering and consulting PDFs.
+- `public/index.html`: initial metadata, canonical URL and Person structured data.
+- `public/social-card.svg`: editable source for the sharing image.
+- `src/assets/font/`: self-hosted IBM Plex Sans and Mono WOFF2 files with their OFL licenses. Sources: Fontsource 5.3.0 packages, derived from [IBM Plex](https://github.com/IBM/plex).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Contact links open the visitor's email client. The site does not send email or store form submissions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The decorative WebGL scene loads a pinned Three.js module from jsDelivr, independently of the main application bundle. If loading or WebGL fails, a CSS illustration remains visible. Animation can be paused and respects reduced-motion preferences.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Validation for this refresh
 
-### `npm run eject`
+- Production build passes.
+- Five interaction tests cover audience paths, internal links, inquiry type and CV selection, language persistence, case-study disclosure and mobile-menu keyboard behavior.
+- Browser checks at 375, 768 and 1440 px in English and Spanish show no horizontal overflow.
+- Both PDF URLs return HTTP 200, application/pdf and a valid PDF signature.
+- Desktop axe WCAG 2 A/AA and 2.1 AA checks return no violations after contrast adjustments. Automated checks do not replace a full accessibility audit.
+- Mobile navigation, Escape/focus handling, role contact links and reduced-motion behavior checked in the browser.
+- A numeric Lighthouse score has not been measured.
+- Checks were run locally on Node 22.12.0; the repository's Node 20 deployment setting was preserved. Existing toolchain deprecation and Browserslist data warnings remain.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Deployment and rollback
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Publish the `build/` output through the existing deployment workflow after reviewing the change. This work has not deployed or pushed to production.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Keep the previous successful deployment available in the hosting provider before releasing. To roll back a release, promote that previous deployment; avoid resetting a working directory with uncommitted work. The source baseline before this refresh was commit `d016fbd`.

@@ -1,38 +1,21 @@
-import { createContext, useContext, useState, useEffect } from "react";
-
+import { createContext, useContext, useEffect, useState } from "react";
+import { getContent } from "../content/siteContent";
 const LanguageContext = createContext();
-
 const getDefaultLanguage = () => {
-  const saved = localStorage.getItem("language");
-  if (saved) return saved;
-
-  const browserLang = navigator.language || navigator.userLanguage;
-  if (browserLang?.startsWith("es")) return "es";
-  return "en";
+  try { return localStorage.getItem("language") === "es" ? "es" : "en"; }
+  catch { return "en"; }
 };
-
-export const LanguageProvider = ({ children }) => {
+export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState(getDefaultLanguage);
-
   useEffect(() => {
-    localStorage.setItem("language", language);
+    try { localStorage.setItem("language", language); } catch { /* Storage may be unavailable. */ }
+    document.documentElement.lang = language;
+    const { seo } = getContent(language);
+    document.title = seo.title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", seo.description);
+    for (const key of ["og:title", "twitter:title"]) document.querySelector(`meta[property="${key}"], meta[name="${key}"]`)?.setAttribute("content", seo.title);
+    for (const key of ["og:description", "twitter:description"]) document.querySelector(`meta[property="${key}"], meta[name="${key}"]`)?.setAttribute("content", seo.description);
   }, [language]);
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "en" ? "es" : "en"));
-  };
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-};
-
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
-  }
-  return context;
-};
+  return <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage: () => setLanguage(v => v === "en" ? "es" : "en") }}>{children}</LanguageContext.Provider>;
+}
+export function useLanguage() { return useContext(LanguageContext); }

@@ -1,75 +1,8 @@
-import { Container, Row, Col } from "react-bootstrap";
-import { motion } from "framer-motion";
-import { CheckCircleFill, Download } from "react-bootstrap-icons";
-import { getContent } from "../content/siteContent";
+import { getContent, profile, inquiryLink } from "../content/siteContent";
 import { useLanguage } from "../context/LanguageContext";
-
-export const About = () => {
+import { Icon, Reveal } from "./UI";
+export function About() {
   const { language } = useLanguage();
-  const { about, nav } = getContent(language);
-
-  return (
-    <section className="about" id="about">
-      <Container>
-        <Row className="align-items-center">
-          <Col xs={12} lg={8} className="mx-auto">
-            <motion.div
-              className="about-content"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2>{about.title}</h2>
-              <p>{about.description}</p>
-
-              <div className="credibility-bullets">
-                {about.credibilityBullets.map((bullet, index) => (
-                  <motion.div
-                    key={index}
-                    className="credibility-bullet"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <CheckCircleFill className="credibility-icon" />
-                    <span>{bullet}</span>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="about-highlights">
-                {about.highlights.map((highlight, index) => (
-                  <motion.span
-                    key={index}
-                    className="highlight-chip"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {highlight}
-                  </motion.span>
-                ))}
-              </div>
-
-              <motion.a
-                className="resume-link"
-                href="/Eduardo-Zuniga.pdf"
-                download
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                <Download size={16} />
-                {nav.resumeLabel}
-              </motion.a>
-            </motion.div>
-          </Col>
-        </Row>
-      </Container>
-    </section>
-  );
-};
+  const { experience, common } = getContent(language);
+  return <section className="experience light-section section-pad" id="experience"><span id="about" className="anchor-alias" /><div className="container"><p className="eyebrow">{experience.eyebrow}</p><div className="experience-layout"><Reveal className="experience-profile"><h2>{experience.title}<br /><em>{experience.accent}</em></h2><p className="profile-description">{experience.description}</p><p className="profile-note">{experience.note}</p><div className="experience-stat"><span>10<span>+</span></span><p>{experience.years}</p></div><a className="button button-dark" download href={profile.engineeringCV}>{common.cv}<Icon name="download" size={18} /></a><a className="text-link role-link" href={inquiryLink(language, "role")}>{experience.roleCta}<Icon name="diagonal" size={17} /></a></Reveal><div className="experience-history">{experience.roles.map((role, index) => <Reveal key={role.company} className="career-entry" delay={index * 60}><div className="career-meta"><span>{role.period}</span><span>{role.via}</span></div><h3>{role.company}</h3><p className="career-role">{role.title}</p><p>{role.description}</p></Reveal>)}<p className="earlier-roles">{experience.earlier}</p><div className="education"><p className="eyebrow">{experience.educationLabel}</p>{experience.education.map(item => <p key={item}>{item}</p>)}</div></div></div><div className="expertise-groups">{experience.expertise.map(group => <div key={group.label}><span className="eyebrow">{group.label}</span><p>{group.items}</p></div>)}</div></div></section>;
+}

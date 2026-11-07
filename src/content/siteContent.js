@@ -1,580 +1,107 @@
+export const profile = {
+  name: "Eduardo Zuñiga", email: "eduzsantillan@gmail.com",
+  linkedin: "https://www.linkedin.com/in/eduzuniga/", github: "https://github.com/eduzsantillan",
+  engineeringCV: "/assets/Eduardo_Zuniga_Senior_Backend_Engineer.pdf",
+  consultingCV: "/assets/Eduardo_Zuniga_Software_Consulting.pdf",
+};
 const en = {
+  nav: { consulting: "Consulting", work: "Selected work", experience: "Experience", contact: "Contact", cta: "Let’s talk", menu: "Open navigation", close: "Close navigation", home: "Eduardo Zuñiga — home", language: "Switch to Spanish" },
+  common: { project: "Discuss a project", cv: "Download engineering CV", consultingCV: "Consulting profile", skip: "Skip to content", more: "Explore the work", back: "Back to top" },
   hero: {
-    headline:
-      "I help teams ship reliable backend systems and AI-powered features.",
-    subheadline:
-      "Experience across fintech, SaaS, and data-heavy platforms. Spring Boot, AWS, React.",
-    idealFor:
-      "Ideal for teams that need to ship fast, reduce technical risk, and improve performance.",
-    proofChips: [
-      "Reporting speed: 100s → <1s",
-      "~80% fewer production bugs",
-      "AI-powered ID verification",
-    ],
-    primaryCta: "Book a 30-min call",
-    secondaryCta: "See case studies",
-    tag: "Software Consultant · Vancouver, BC",
+    eyebrow: "Senior Backend Engineer & Independent Consultant", line1: "Complex systems.", line2: "Clear", accent: "solutions.",
+    description: "I build secure, reliable backend systems for fintech and enterprise teams. From financial integrations to identity workflows, I turn complex requirements into software that works.",
+    secondary: "Explore my experience", note: "Independent expertise. Thoughtful engineering.",
+    sceneLabel: "Connected by design", sceneCaption: "Security · Payments · Reliability", sceneHint: "Move to explore", scroll: "Scroll to discover", pause: "Pause animations", resume: "Resume animations",
+    domains: ["Java & Spring Boot", "Payments & Fintech", "Identity & Security", "Distributed Systems"],
   },
-  trustBar: {
-    items: [
-      { icon: "🌎", text: "Remote across Canada & USA · Pacific Time" },
-      { icon: "🌐", text: "English / Spanish" },
-      { icon: "☁️", text: "AWS Certified" },
-      { icon: "🤖", text: "Azure AI Engineer" },
-      { icon: "🎓", text: "Professor / Mentor" },
-    ],
+  paths: {
+    client: { eyebrow: "FOR YOUR NEXT PROJECT", title: "A specialist for the hard parts.", description: "Scoped backend implementation, from discovery to handover.", cta: "Explore consulting" },
+    recruiter: { eyebrow: "FOR YOUR ENGINEERING TEAM", title: "Experience that goes deep.", description: "Senior engineering across financial and enterprise platforms.", cta: "View experience & CV" },
   },
   services: {
-    title: "Services",
-    intro: "How I can help your team",
-    deliverablesLabel: "Deliverables",
+    eyebrow: "01 / HOW I CAN HELP", title: "Critical systems.", accent: "Considered engineering.", intro: "Three areas of focus. One engineer accountable for turning your requirements into maintainable, production-ready software.",
+    deliverables: "WHAT WE CAN BUILD", cta: "Let’s discuss your challenge", scope: "Project-based engagements · Scope and timeline agreed during discovery",
     items: [
-      {
-        title: "MVP Build",
-        subtitle: "Idea → Production",
-        description:
-          "Transform your concept into a working product ready for real users and feedback.",
-        deliverables: [
-          "Working product deployed to production",
-          "System architecture documentation",
-          "Cloud infrastructure setup",
-        ],
-        outcome: "Launch-ready product with real users",
-        icon: "🚀",
-      },
-      {
-        title: "Backend & Microservices",
-        subtitle: "Scalable Infrastructure",
-        description:
-          "Design and build robust backend systems that grow with your business needs.",
-        deliverables: [
-          "Production-ready APIs deployed",
-          "Database schema & optimization",
-          "Integration with existing systems",
-        ],
-        outcome: "Reliable backend that scales",
-        icon: "⚙️",
-      },
-      {
-        title: "Performance & Reliability",
-        subtitle: "Speed & Stability",
-        description:
-          "Identify bottlenecks and implement fixes that users will notice immediately.",
-        deliverables: [
-          "Performance report + implemented fixes",
-          "Before/after metrics documented",
-          "Monitoring & alerting setup",
-        ],
-        outcome: "Faster app, happier users",
-        icon: "⚡",
-      },
-      {
-        title: "AI Feature Delivery",
-        subtitle: "Prototype → Production",
-        description:
-          "Add AI-powered features to your product—not just demos, real production features.",
-        deliverables: [
-          "Working AI feature in production",
-          "Evaluation metrics & guardrails",
-          "Documentation & maintenance guide",
-        ],
-        outcome: "AI feature your users can rely on",
-        icon: "🤖",
-      },
-      {
-        title: "Architecture Review",
-        subtitle: "1-Week Assessment",
-        description:
-          "Get expert analysis of your current system with a clear action plan.",
-        deliverables: [
-          "Roadmap + architecture diagram",
-          "Risk assessment with prioritized fixes",
-          "Quick wins you can implement today",
-        ],
-        outcome: "Clear path forward for your tech",
-        icon: "🔍",
-      },
+      { id: "identity", number: "01", short: "Identity & security", title: "Protect the moments that matter.", description: "Make onboarding, account recovery, and sensitive financial actions more secure, without losing sight of the user experience.", deliverables: ["KYC & onboarding integrations", "Account recovery & trusted devices", "Authorization controls & audit trails"], tags: ["Identity", "Account security"] },
+      { id: "payments", number: "02", short: "Payments & integrations", title: "Connect systems. Keep business moving.", description: "Bring financial APIs and internal services together with workflows that account for errors, retries, and real-world complexity.", deliverables: ["Payment & partner API integrations", "Event-driven financial workflows", "Failure handling & observability"], tags: ["Payments", "APIs"] },
+      { id: "modernization", number: "03", short: "Java & reliability", title: "Move your platform forward.", description: "Untangle an evolving Java backend, address performance bottlenecks, and build a more maintainable foundation for your team.", deliverables: ["Java service modernization", "Modularization & performance diagnostics", "Integration tests & delivery pipelines"], tags: ["Java", "Architecture"] },
     ],
   },
-  caseStudies: {
-    title: "Case Studies",
-    intro:
-      "Real results from production systems. Details anonymized for client privacy.",
-    viewDetails: "View details →",
-    modalLabels: {
-      challenge: "The Challenge",
-      constraints: "Constraints",
-      actions: "What I Did",
-      results: "Results",
-      stack: "Tech Stack",
-      cta: "Want similar results for your project?",
-      ctaButton: "Book a call",
-    },
+  work: {
+    eyebrow: "02 / SELECTED ENGINEERING", title: "Built for the", accent: "real world.", intro: "A closer look at work across financial and enterprise systems. Public summaries, with proprietary details kept private.",
+    open: "Explore case study", close: "Close case study", labels: { challenge: "The challenge", approach: "The approach", responsibility: "My contribution", outcome: "What it enabled" },
     items: [
-      {
-        id: "reporting-performance",
-        title: "Reporting Performance Optimization",
-        industry: "Fintech Platform",
-        context:
-          "Slow reports were blocking ops teams from making timely decisions.",
-        problem:
-          "Reporting queries taking 100+ seconds were causing timeout errors and user frustration. The ops team couldn't get the data they needed to run the business.",
-        constraints:
-          "High-traffic production system, couldn't afford downtime, needed results in 3 weeks.",
-        actions: [
-          "Profiled and identified the slowest queries",
-          "Implemented intelligent caching with Redis",
-          "Optimized database indexes and query patterns",
-          "Redesigned data aggregation algorithm",
-        ],
-        results: [
-          { metric: "100s → <1s", label: "Query response (faster decisions)" },
-          { metric: "99.9%", label: "Uptime maintained" },
-        ],
-        stack: ["Java", "Spring Boot", "PostgreSQL", "Redis", "AWS"],
-      },
-      {
-        id: "stability-quality",
-        title: "Stability & Quality Improvement",
-        industry: "SaaS Platform",
-        context:
-          "Frequent bugs were eroding user trust and slowing down the team.",
-        problem:
-          "Low test coverage and inconsistent code quality meant bugs kept reaching production. The team was spending more time fixing issues than building features.",
-        constraints:
-          "Needed to improve quality without stopping feature development.",
-        actions: [
-          "Introduced testing practices and CI/CD gates",
-          "Refactored critical modules for testability",
-          "Mentored team on quality-first development",
-          "Set up monitoring and alerting",
-        ],
-        results: [
-          { metric: "~80%", label: "Fewer production bugs (more stability)" },
-          { metric: "3x", label: "Faster release cycles" },
-        ],
-        stack: ["Java", "Spring Boot", "JUnit", "Docker", "CI/CD"],
-      },
-      {
-        id: "identity-verification",
-        title: "Identity Verification System",
-        industry: "Fintech / Compliance",
-        context:
-          "Manual ID checks couldn't keep up with user growth and compliance needs.",
-        problem:
-          "Manual ID validation was slow, error-prone, and creating a bottleneck for onboarding. Compliance requirements demanded faster, more accurate verification.",
-        constraints:
-          "Strict compliance requirements, needed 99%+ accuracy, sub-5-second response time.",
-        actions: [
-          "Implemented AWS Rekognition for document verification",
-          "Built selfie-to-ID matching workflow",
-          "Created fraud detection guardrails",
-          "Designed fallback flows for edge cases",
-        ],
-        results: [
-          { metric: "90%+", label: "Automated (less manual work)" },
-          { metric: "< 5s", label: "Verification time" },
-        ],
-        stack: ["AWS Rekognition", "AWS Lambda", "Spring Boot", "S3", "React"],
-      },
+      { slug: "account-protection", type: "identity", category: "FINTECH / IDENTITY", title: "Trust, built into sensitive account flows.", summary: "KYC, device trust, and account protection across critical customer journeys.", challenge: "Sensitive operations such as account recovery and transfers need coordinated identity and authorization checks.", approach: "Connect KYC workflows with verification and trusted-device controls at sensitive points in the customer journey.", responsibility: "Implemented end-to-end KYC flows and account-protection controls for password recovery and financial transfers.", outcome: "Identity verification and account-protection checks became part of backend workflows supporting sensitive actions.", technologies: ["Java", "Spring Boot", "Identity workflows"], confidentialityNote: "Implementation details and internal security policies are intentionally omitted.", audienceTags: ["Identity", "Security"] },
+      { slug: "financial-integrations", type: "payments", category: "FINTECH / INTEGRATIONS", title: "Connecting the moving parts of payments.", summary: "Global-account capabilities, payment integrations, and contractor payment requests.", challenge: "Financial features require multiple services and external integrations to work together across a payment lifecycle.", approach: "Develop backend capabilities around clear domain models, APIs, and event-driven workflows.", responsibility: "Built global-account and payment integration capabilities, and delivered the domain model, APIs, and workflows for payment requests.", outcome: "Supported integrated financial account capabilities and enabled contractors to request funds through the platform.", technologies: ["Spring Boot", "Kafka", "PostgreSQL"], confidentialityNote: "Partner names, financial data, and internal architecture are not disclosed.", audienceTags: ["Payments", "Integrations"] },
+      { slug: "enterprise-modernization", type: "modernization", category: "ENTERPRISE / MODERNIZATION", title: "A clearer structure for enterprise Java.", summary: "Domain-based modularization and regression validation in a large enterprise codebase.", challenge: "A large Java application needed clearer boundaries between business responsibilities while preserving existing workflows.", approach: "Contribute to domain-aligned deployment restructuring, investigate workflow defects, and validate changes across modules.", responsibility: "Contributed to ERP domain restructuring, corrected business workflow defects, and ran regression validation in a multi-module environment.", outcome: "Clearer separation of application responsibilities, supported by regression checks across the Java codebase.", technologies: ["Java", "Payara", "Regression testing"], confidentialityNote: "A summary of my contribution, without disclosing proprietary architecture.", audienceTags: ["Enterprise", "Reliability"] },
     ],
   },
   process: {
-    title: "How We Work",
-    intro: "A clear process from first call to delivery",
+    eyebrow: "03 / WORKING TOGETHER", title: "Clear scope.", accent: "Visible progress.", intro: "You work directly with me, from the first technical conversation to the final handover.",
     steps: [
-      {
-        step: 1,
-        title: "Discovery Call",
-        description:
-          "We discuss your goals, challenges, and timeline. I'll tell you honestly if I can help.",
-        icon: "📞",
-      },
-      {
-        step: 2,
-        title: "Proposal + Milestones",
-        description:
-          "You receive a clear scope, timeline, and investment. No surprises.",
-        icon: "📋",
-      },
-      {
-        step: 3,
-        title: "Weekly Demos + Delivery",
-        description:
-          "Working software delivered every week. You see progress, not just promises.",
-        icon: "🔄",
-      },
-      {
-        step: 4,
-        title: "Handoff + Support",
-        description:
-          "Complete documentation, knowledge transfer, and optional ongoing support.",
-        icon: "✅",
-      },
+      { title: "Understand", description: "We discuss your goals, existing systems, constraints, and what success looks like.", output: "Shared understanding" },
+      { title: "Define", description: "We agree on deliverables, milestones, acceptance criteria, pricing, and ownership terms.", output: "A scoped proposal" },
+      { title: "Build", description: "Incremental implementation with demos, tests, and documentation as the work progresses.", output: "Reviewable milestones" },
+      { title: "Hand over", description: "Agreed source-code delivery, deployment guidance, knowledge transfer, and support terms.", output: "A confident handover" },
     ],
   },
-  about: {
-    title: "About Eduardo",
-    description:
-      "I work with product teams across Canada and the US to build software that supports business goals. From fast-moving teams to established organizations, I help ship reliable systems that scale.",
-    credibilityBullets: [
-      "8+ years delivering production systems",
-      "Backend + cloud specialization (Spring Boot, AWS)",
-      "AI features in real products (not just demos)",
+  experience: {
+    eyebrow: "04 / THE ENGINEER BEHIND THE WORK", title: "Senior expertise.", accent: "Direct collaboration.", description: "I’m Eduardo, a backend-focused software engineer with 10 years of experience delivering financial and enterprise platforms. I connect technical decisions with the business problems they need to solve.", note: "Java is my core. Financial systems, identity, and production reliability are where I bring it to life.", years: "Years in software engineering", roleCta: "Discuss an engineering role", earlier: "Previously: Profuturo AFP · Inetum · Effitec IT",
+    roles: [
+      { company: "Martin Bros.", via: "via FullStack Labs", period: "2026", title: "Senior Full Stack Engineer · Contract", description: "Enterprise Java, ERP domain restructuring, and regression validation across a multi-module codebase." },
+      { company: "Ontop", via: "Fintech", period: "2023 — 2026", title: "Senior Backend Engineer", description: "KYC, trusted-device controls, payment integrations, global-account capabilities, and distributed backend services." },
+      { company: "SURA · Integra AFP", via: "Financial services", period: "2021 — 2023", title: "Full Stack Engineer · Backend Focus", description: "AWS-powered identity verification, account session security, and customer-service automation." },
     ],
-    highlights: [
-      "AWS Certified Cloud Practitioner",
-      "Azure AI Engineer Associate",
-      "Computer Science Professor",
-      "Fintech · SaaS · Enterprise",
-    ],
+    educationLabel: "EDUCATION", education: ["Software Systems Development, Honors · BCIT", "Bachelor’s Degree, Computer Science Engineering · USMP"],
+    expertise: [ { label: "BACKEND", items: "Java 8–21 · Spring Boot · JPA / Hibernate · REST APIs" }, { label: "SYSTEMS", items: "Microservices · Kafka · Event-driven integrations" }, { label: "DELIVERY", items: "AWS · PostgreSQL · Docker · Kubernetes · CI/CD" } ],
   },
-  resultsStrip: {
-    label: "Proven Results:",
-    items: [
-      { metric: "<1s", label: "Reporting" },
-      { metric: "-80%", label: "Bugs" },
-      { metric: "90%+", label: "Automation" },
-      { metric: "3x", label: "Faster releases" },
-    ],
-  },
-  contact: {
-    headline: "Let's build something reliable together.",
-    bullets: [
-      "Production-ready systems",
-      "Clear milestones + weekly demos",
-      "No surprises",
-    ],
-    microPromise:
-      "In the call: clarify scope, risks, timeline, and next steps. No pressure.",
-    responseTime: "I reply within 1–2 business days.",
-    bookingLabel: "Book a 30-min call",
-    bookingSubtitle: "Free discovery session",
-    emailLabel: "Email me",
-    linkedinLabel: "Connect on LinkedIn",
-    linkedinSubtitle: "Let's network",
-    formTitle: "Or send a message",
-    formPlaceholder: "What are you trying to build or improve?",
-    formButton: "Send Message",
-    formSending: "Sending...",
-    formSuccess: "Message sent! I'll get back to you soon.",
-    formError: "Something went wrong. Please try email instead.",
-    bookingUrl: "https://calendly.com/eduzsantillan/30min",
-    email: "eduzsantillan@gmail.com",
-    linkedinUrl: "https://www.linkedin.com/in/eduzuniga/",
-    githubUrl: "https://github.com/eduzsantillan",
-    youtubeUrl: "https://www.youtube.com/channel/UClYgKxDslmfUmGoVIYkTPHw",
-  },
-  nav: {
-    links: [
-      { label: "Services", href: "#services" },
-      { label: "Case Studies", href: "#case-studies" },
-      { label: "About", href: "#about" },
-      { label: "Contact", href: "#contact" },
-    ],
-    ctaLabel: "Book a call",
-    resumeLabel: "Download resume",
-  },
-  seo: {
-    title: "Eduardo Zúñiga — Software Consultant (Backend, AI, Cloud)",
-    description:
-      "I build scalable backend + AI features for SaaS/Fintech teams. 8+ years delivering secure production systems. Spring Boot, AWS, React.",
-    ogImage: "/og-image.png",
-  },
+  faq: { eyebrow: "A FEW PRACTICAL DETAILS", title: "Before we start.", items: [
+    { question: "Can you work with our existing engineering team?", answer: "Yes. I can take on a clearly scoped implementation or integration while collaborating with your engineers, product team, and existing delivery process." },
+    { question: "Will we own the source code?", answer: "Code ownership, licensing, and source-code handover are defined in the project agreement before implementation starts." },
+    { question: "How long does an engagement take?", answer: "Scope and timeline depend on your systems, requirements, and constraints. We agree on milestones and acceptance criteria during discovery rather than assuming one timeline fits every project." },
+    { question: "Do you provide ongoing support?", answer: "Support, warranty coverage, and availability can be included in the original scope or defined in a separate agreement." },
+  ] },
+  contact: { eyebrow: "LET’S BUILD SOMETHING THAT MATTERS", title: "Your next challenge.", accent: "Let’s solve it.", description: "Tell me what you’re building, what’s getting in the way, and where you want to go next.", project: "I have a project", role: "I’m hiring an engineer", email: "Send a project inquiry", roleEmail: "Discuss a role", projectSubject: "Let’s discuss a backend project", roleSubject: "Senior backend engineering opportunity", note: "A direct conversation. Clear next steps.", copy: "Copy email address", copied: "Email copied", copyFailed: "Copy unavailable. Use the email link.", download: "Prefer a quick overview?", footer: "Backend engineering. Built with intention.", rights: "All rights reserved." },
+  seo: { title: "Eduardo Zuñiga — Senior Backend Engineer & Consultant", description: "Specialized Java and Spring Boot engineering for fintech and enterprise teams. Identity security, payment integrations, and backend modernization." },
 };
-
 const es = {
-  hero: {
-    headline:
-      "Ayudo a equipos a entregar sistemas backend confiables y funciones con IA.",
-    subheadline:
-      "Experiencia en fintech, SaaS y plataformas de datos. Spring Boot, AWS, React.",
-    idealFor:
-      "Ideal para equipos que necesitan entregar rápido, reducir riesgo técnico y mejorar rendimiento.",
-    proofChips: [
-      "Velocidad de reportes: 100s → <1s",
-      "~80% menos bugs en producción",
-      "Verificación de ID con IA",
-    ],
-    primaryCta: "Agendar llamada de 30 min",
-    secondaryCta: "Ver casos de éxito",
-    tag: "Consultor de Software · Vancouver, BC",
-  },
-  trustBar: {
-    items: [
-      { icon: "🌎", text: "Remoto en Canadá y USA · Hora del Pacífico" },
-      { icon: "🌐", text: "Inglés / Español" },
-      { icon: "☁️", text: "AWS Certificado" },
-      { icon: "🤖", text: "Azure AI Engineer" },
-      { icon: "🎓", text: "Profesor / Mentor" },
-    ],
-  },
-  services: {
-    title: "Servicios",
-    intro: "Cómo puedo ayudar a tu equipo",
-    deliverablesLabel: "Entregables",
-    items: [
-      {
-        title: "Desarrollo de MVP",
-        subtitle: "Idea → Producción",
-        description:
-          "Transforma tu concepto en un producto funcional listo para usuarios reales.",
-        deliverables: [
-          "Producto funcional en producción",
-          "Documentación de arquitectura",
-          "Configuración de infraestructura cloud",
-        ],
-        outcome: "Producto listo para lanzar",
-        icon: "🚀",
-      },
-      {
-        title: "Backend y Microservicios",
-        subtitle: "Infraestructura Escalable",
-        description:
-          "Diseño y construcción de sistemas backend robustos que crecen con tu negocio.",
-        deliverables: [
-          "APIs listas para producción",
-          "Esquema de BD y optimización",
-          "Integración con sistemas existentes",
-        ],
-        outcome: "Backend confiable que escala",
-        icon: "⚙️",
-      },
-      {
-        title: "Rendimiento y Confiabilidad",
-        subtitle: "Velocidad y Estabilidad",
-        description:
-          "Identifico cuellos de botella e implemento mejoras que los usuarios notan.",
-        deliverables: [
-          "Reporte de rendimiento + mejoras implementadas",
-          "Métricas antes/después documentadas",
-          "Configuración de monitoreo y alertas",
-        ],
-        outcome: "App más rápida, usuarios felices",
-        icon: "⚡",
-      },
-      {
-        title: "Entrega de Funciones con IA",
-        subtitle: "Prototipo → Producción",
-        description:
-          "Agrego funciones con IA a tu producto—no solo demos, funciones reales en producción.",
-        deliverables: [
-          "Función de IA funcional en producción",
-          "Métricas de evaluación y guardrails",
-          "Documentación y guía de mantenimiento",
-        ],
-        outcome: "Función de IA en la que tus usuarios confían",
-        icon: "🤖",
-      },
-      {
-        title: "Revisión de Arquitectura",
-        subtitle: "Evaluación de 1 Semana",
-        description:
-          "Obtén análisis experto de tu sistema actual con un plan de acción claro.",
-        deliverables: [
-          "Roadmap + diagrama de arquitectura",
-          "Evaluación de riesgos con fixes priorizados",
-          "Quick wins que puedes implementar hoy",
-        ],
-        outcome: "Camino claro para tu tecnología",
-        icon: "🔍",
-      },
-    ],
-  },
-  caseStudies: {
-    title: "Casos de Éxito",
-    intro:
-      "Resultados reales de sistemas en producción. Detalles anonimizados por privacidad.",
-    viewDetails: "Ver detalles →",
-    modalLabels: {
-      challenge: "El Desafío",
-      constraints: "Restricciones",
-      actions: "Lo que Hice",
-      results: "Resultados",
-      stack: "Stack Tecnológico",
-      cta: "¿Quieres resultados similares para tu proyecto?",
-      ctaButton: "Agendar llamada",
-    },
-    items: [
-      {
-        id: "reporting-performance",
-        title: "Optimización de Rendimiento de Reportes",
-        industry: "Plataforma Fintech",
-        context:
-          "Reportes lentos bloqueaban al equipo de operaciones para tomar decisiones.",
-        problem:
-          "Consultas de reportes tomando 100+ segundos causaban errores de timeout y frustración. El equipo de ops no podía obtener los datos para operar el negocio.",
-        constraints:
-          "Sistema de alto tráfico, no podíamos tener downtime, resultados necesarios en 3 semanas.",
-        actions: [
-          "Perfilé e identifiqué las consultas más lentas",
-          "Implementé caché inteligente con Redis",
-          "Optimicé índices y patrones de consultas",
-          "Rediseñé algoritmo de agregación de datos",
-        ],
-        results: [
-          {
-            metric: "100s → <1s",
-            label: "Respuesta de consulta (decisiones más rápidas)",
-          },
-          { metric: "99.9%", label: "Uptime mantenido" },
-        ],
-        stack: ["Java", "Spring Boot", "PostgreSQL", "Redis", "AWS"],
-      },
-      {
-        id: "stability-quality",
-        title: "Mejora de Estabilidad y Calidad",
-        industry: "Plataforma SaaS",
-        context:
-          "Bugs frecuentes erosionaban la confianza y ralentizaban al equipo.",
-        problem:
-          "Baja cobertura de tests y calidad inconsistente significaban bugs llegando a producción. El equipo pasaba más tiempo arreglando que construyendo.",
-        constraints:
-          "Necesitábamos mejorar calidad sin detener el desarrollo de features.",
-        actions: [
-          "Introduje prácticas de testing y gates de CI/CD",
-          "Refactoricé módulos críticos para testabilidad",
-          "Mentoricé al equipo en desarrollo quality-first",
-          "Configuré monitoreo y alertas",
-        ],
-        results: [
-          {
-            metric: "~80%",
-            label: "Menos bugs en producción (más estabilidad)",
-          },
-          { metric: "3x", label: "Ciclos de release más rápidos" },
-        ],
-        stack: ["Java", "Spring Boot", "JUnit", "Docker", "CI/CD"],
-      },
-      {
-        id: "identity-verification",
-        title: "Sistema de Verificación de Identidad",
-        industry: "Fintech / Cumplimiento",
-        context:
-          "Verificación manual de IDs no podía seguir el ritmo del crecimiento.",
-        problem:
-          "Validación manual de IDs era lenta, propensa a errores y creaba cuellos de botella. El cumplimiento demandaba verificación más rápida y precisa.",
-        constraints:
-          "Requisitos estrictos de cumplimiento, necesidad de 99%+ precisión, respuesta <5 segundos.",
-        actions: [
-          "Implementé AWS Rekognition para verificación de documentos",
-          "Construí flujo de matching selfie-a-ID",
-          "Creé guardrails de detección de fraude",
-          "Diseñé flujos de fallback para casos edge",
-        ],
-        results: [
-          { metric: "90%+", label: "Automatizado (menos trabajo manual)" },
-          { metric: "< 5s", label: "Tiempo de verificación" },
-        ],
-        stack: ["AWS Rekognition", "AWS Lambda", "Spring Boot", "S3", "React"],
-      },
-    ],
-  },
-  process: {
-    title: "Cómo Trabajamos",
-    intro: "Un proceso claro desde la primera llamada hasta la entrega",
-    steps: [
-      {
-        step: 1,
-        title: "Llamada de Descubrimiento",
-        description:
-          "Discutimos tus objetivos, desafíos y timeline. Te diré honestamente si puedo ayudar.",
-        icon: "📞",
-      },
-      {
-        step: 2,
-        title: "Propuesta + Hitos",
-        description:
-          "Recibes un alcance claro, timeline e inversión. Sin sorpresas.",
-        icon: "📋",
-      },
-      {
-        step: 3,
-        title: "Demos Semanales + Entrega",
-        description:
-          "Software funcional entregado cada semana. Ves progreso, no solo promesas.",
-        icon: "🔄",
-      },
-      {
-        step: 4,
-        title: "Entrega + Soporte",
-        description:
-          "Documentación completa, transferencia de conocimiento y soporte opcional.",
-        icon: "✅",
-      },
-    ],
-  },
-  about: {
-    title: "Sobre Eduardo",
-    description:
-      "Trabajo con equipos de producto en Canadá y Estados Unidos construyendo software que apoya los objetivos del negocio. Desde equipos ágiles hasta organizaciones establecidas, ayudo a entregar sistemas confiables que escalan.",
-    credibilityBullets: [
-      "8+ años entregando sistemas en producción",
-      "Especialización en backend + cloud (Spring Boot, AWS)",
-      "Funciones de IA en productos reales (no solo demos)",
-    ],
-    highlights: [
-      "AWS Certified Cloud Practitioner",
-      "Azure AI Engineer Associate",
-      "Profesor de Ciencias de la Computación",
-      "Fintech · SaaS · Enterprise",
-    ],
-  },
-  resultsStrip: {
-    label: "Resultados Probados:",
-    items: [
-      { metric: "<1s", label: "Reportes" },
-      { metric: "-80%", label: "Bugs" },
-      { metric: "90%+", label: "Automatización" },
-      { metric: "3x", label: "Releases más rápidos" },
-    ],
-  },
-  contact: {
-    headline: "Construyamos algo confiable juntos.",
-    bullets: [
-      "Sistemas listos para producción",
-      "Hitos claros + demos semanales",
-      "Sin sorpresas",
-    ],
-    microPromise:
-      "En la llamada: aclaramos alcance, riesgos, timeline y próximos pasos. Sin presión.",
-    responseTime: "Respondo en 1–2 días hábiles.",
-    bookingLabel: "Agendar llamada de 30 min",
-    bookingSubtitle: "Sesión de descubrimiento gratis",
-    emailLabel: "Envíame un email",
-    linkedinLabel: "Conectar en LinkedIn",
-    linkedinSubtitle: "Hagamos networking",
-    formTitle: "O envía un mensaje",
-    formPlaceholder: "¿Qué estás tratando de construir o mejorar?",
-    formButton: "Enviar Mensaje",
-    formSending: "Enviando...",
-    formSuccess: "¡Mensaje enviado! Te responderé pronto.",
-    formError: "Algo salió mal. Por favor intenta por email.",
-    bookingUrl: "https://calendly.com/eduzsantillan/30min",
-    email: "eduzsantillan@gmail.com",
-    linkedinUrl: "https://www.linkedin.com/in/eduzuniga/",
-    githubUrl: "https://github.com/eduzsantillan",
-    youtubeUrl: "https://www.youtube.com/channel/UClYgKxDslmfUmGoVIYkTPHw",
-  },
-  nav: {
-    links: [
-      { label: "Servicios", href: "#services" },
-      { label: "Casos de Éxito", href: "#case-studies" },
-      { label: "Sobre Mí", href: "#about" },
-      { label: "Contacto", href: "#contact" },
-    ],
-    ctaLabel: "Agendar llamada",
-    resumeLabel: "Descargar CV",
-  },
-  seo: {
-    title: "Eduardo Zúñiga — Consultor de Software (Backend, IA, Cloud)",
-    description:
-      "Construyo backend escalable + funciones de IA para equipos de SaaS/Fintech. 8+ años entregando sistemas seguros en producción. Spring Boot, AWS, React.",
-    ogImage: "/og-image.png",
-  },
+  nav: { consulting: "Servicios", work: "Proyectos", experience: "Experiencia", contact: "Contacto", cta: "Conversemos", menu: "Abrir navegación", close: "Cerrar navegación", home: "Eduardo Zuñiga — inicio", language: "Cambiar a inglés" },
+  common: { project: "Hablemos de tu proyecto", cv: "Descargar CV de ingeniería", consultingCV: "Perfil de consultoría", skip: "Ir al contenido", more: "Explorar proyectos", back: "Volver al inicio" },
+  hero: { eyebrow: "Senior Backend Engineer y Consultor Independiente", line1: "Sistemas complejos.", line2: "Soluciones", accent: "claras.", description: "Construyo sistemas backend seguros y confiables para fintechs y empresas. Desde integraciones financieras hasta flujos de identidad, convierto requisitos complejos en software que funciona.", secondary: "Explorar mi experiencia", note: "Experiencia independiente. Ingeniería con criterio.", sceneLabel: "Conectados por diseño", sceneCaption: "Seguridad · Pagos · Confiabilidad", sceneHint: "Mueve el cursor para explorar", scroll: "Descubre más", pause: "Pausar animaciones", resume: "Reanudar animaciones", domains: ["Java y Spring Boot", "Pagos y Fintech", "Identidad y Seguridad", "Sistemas Distribuidos"] },
+  paths: { client: { eyebrow: "PARA TU PRÓXIMO PROYECTO", title: "Un especialista en lo complejo.", description: "Implementación backend con alcance definido, del diagnóstico a la entrega.", cta: "Explorar servicios" }, recruiter: { eyebrow: "PARA TU EQUIPO DE INGENIERÍA", title: "Experiencia que va a fondo.", description: "Ingeniería senior en plataformas financieras y empresariales.", cta: "Ver experiencia y CV" } },
+  services: { eyebrow: "01 / CÓMO PUEDO AYUDARTE", title: "Sistemas críticos.", accent: "Ingeniería con criterio.", intro: "Tres especialidades. Un ingeniero responsable de convertir tus requisitos en software mantenible y listo para producción.", deliverables: "QUÉ PODEMOS CONSTRUIR", cta: "Conversemos sobre tu desafío", scope: "Proyectos con alcance definido · Plazos acordados durante el diagnóstico", items: [
+    { id: "identity", number: "01", short: "Identidad y seguridad", title: "Protege los momentos que importan.", description: "Refuerza el onboarding, la recuperación de cuentas y las operaciones financieras sensibles, cuidando la experiencia del usuario.", deliverables: ["Integraciones de KYC y onboarding", "Recuperación de cuentas y dispositivos de confianza", "Autorización y trazabilidad"], tags: ["Identidad", "Seguridad"] },
+    { id: "payments", number: "02", short: "Pagos e integraciones", title: "Conecta sistemas. Impulsa tu negocio.", description: "Integra APIs financieras y servicios internos con flujos que contemplan errores, reintentos y la complejidad del mundo real.", deliverables: ["Integraciones de pagos y APIs de terceros", "Flujos financieros orientados a eventos", "Manejo de errores y observabilidad"], tags: ["Pagos", "APIs"] },
+    { id: "modernization", number: "03", short: "Java y confiabilidad", title: "Haz avanzar tu plataforma.", description: "Simplifica un backend Java en evolución, resuelve cuellos de botella y construye una base más mantenible para tu equipo.", deliverables: ["Modernización de servicios Java", "Modularización y diagnóstico de rendimiento", "Pruebas de integración y pipelines"], tags: ["Java", "Arquitectura"] },
+  ] },
+  work: { eyebrow: "02 / PROYECTOS SELECCIONADOS", title: "Ingeniería para el", accent: "mundo real.", intro: "Una mirada al trabajo en sistemas financieros y empresariales. Resúmenes públicos que preservan los detalles confidenciales.", open: "Explorar caso", close: "Cerrar caso", labels: { challenge: "El desafío", approach: "El enfoque", responsibility: "Mi contribución", outcome: "Qué hizo posible" }, items: [
+    { slug: "account-protection", type: "identity", category: "FINTECH / IDENTIDAD", title: "Confianza en los flujos de cuenta sensibles.", summary: "KYC, dispositivos de confianza y protección de cuentas en recorridos críticos.", challenge: "La recuperación de cuentas y las transferencias necesitan controles coordinados de identidad y autorización.", approach: "Conectar los flujos KYC con verificación y dispositivos de confianza en momentos sensibles.", responsibility: "Implementé flujos KYC de extremo a extremo y controles de protección para recuperación de contraseñas y transferencias.", outcome: "La verificación de identidad y la protección de cuentas pasaron a formar parte de los flujos backend de operaciones sensibles.", technologies: ["Java", "Spring Boot", "Flujos de identidad"], confidentialityNote: "Se omiten detalles de implementación y políticas internas de seguridad.", audienceTags: ["Identidad", "Seguridad"] },
+    { slug: "financial-integrations", type: "payments", category: "FINTECH / INTEGRACIONES", title: "Conectando cada pieza de los pagos.", summary: "Cuentas globales, integraciones de pagos y solicitudes de fondos de contratistas.", challenge: "Las funcionalidades financieras requieren coordinar varios servicios e integraciones externas durante el ciclo de un pago.", approach: "Desarrollar capacidades backend con modelos de dominio claros, APIs y flujos orientados a eventos.", responsibility: "Desarrollé capacidades de cuentas globales e integraciones de pagos, además del modelo, APIs y flujos de solicitudes de pago.", outcome: "Se habilitaron capacidades financieras integradas y solicitudes de fondos para contratistas.", technologies: ["Spring Boot", "Kafka", "PostgreSQL"], confidentialityNote: "No se exponen nombres de socios, datos financieros ni arquitectura interna.", audienceTags: ["Pagos", "Integraciones"] },
+    { slug: "enterprise-modernization", type: "modernization", category: "EMPRESAS / MODERNIZACIÓN", title: "Una estructura más clara para Java empresarial.", summary: "Modularización por dominios y validación de regresiones en un sistema empresarial.", challenge: "Una aplicación Java necesitaba límites más claros entre responsabilidades sin alterar los flujos existentes.", approach: "Contribuir a la reorganización de despliegues por dominio, investigar defectos y validar cambios entre módulos.", responsibility: "Contribuí a la reestructuración de dominios ERP, corregí defectos funcionales y ejecuté validaciones de regresión.", outcome: "Una separación más clara de responsabilidades, respaldada por validaciones de regresión en el código Java.", technologies: ["Java", "Payara", "Pruebas de regresión"], confidentialityNote: "Resumen de mi contribución; no revela arquitectura propietaria.", audienceTags: ["Empresas", "Confiabilidad"] },
+  ] },
+  process: { eyebrow: "03 / CÓMO TRABAJAMOS", title: "Alcance claro.", accent: "Avance visible.", intro: "Trabajas directamente conmigo, desde la primera conversación técnica hasta la entrega final.", steps: [
+    { title: "Entender", description: "Conversamos sobre tus objetivos, sistemas, restricciones y qué significa una entrega exitosa.", output: "Contexto compartido" },
+    { title: "Definir", description: "Acordamos entregables, hitos, criterios de aceptación, inversión y términos de propiedad.", output: "Una propuesta concreta" },
+    { title: "Construir", description: "Implementación incremental con demos, pruebas y documentación durante el desarrollo.", output: "Avances revisables" },
+    { title: "Entregar", description: "Código acordado, guía de despliegue, transferencia de conocimiento y condiciones de soporte.", output: "Una entrega completa" },
+  ] },
+  experience: { eyebrow: "04 / EL INGENIERO DETRÁS DEL TRABAJO", title: "Experiencia senior.", accent: "Colaboración directa.", description: "Soy Eduardo, ingeniero de software especializado en backend con 10 años de experiencia en plataformas financieras y empresariales. Conecto las decisiones técnicas con los problemas de negocio que deben resolver.", note: "Java es mi base. Los sistemas financieros, la identidad y la confiabilidad en producción son donde la pongo en práctica.", years: "Años en ingeniería de software", roleCta: "Conversar sobre una oportunidad", earlier: "Anteriormente: Profuturo AFP · Inetum · Effitec IT", roles: [
+    { company: "Martin Bros.", via: "vía FullStack Labs", period: "2026", title: "Senior Full Stack Engineer · Contrato", description: "Java empresarial, reestructuración de dominios ERP y validación de regresiones en múltiples módulos." },
+    { company: "Ontop", via: "Fintech", period: "2023 — 2026", title: "Senior Backend Engineer", description: "KYC, dispositivos de confianza, integraciones de pagos, cuentas globales y servicios backend distribuidos." },
+    { company: "SURA · Integra AFP", via: "Servicios financieros", period: "2021 — 2023", title: "Full Stack Engineer · Enfoque Backend", description: "Verificación de identidad con AWS, seguridad de sesiones y automatización de atención al cliente." },
+  ], educationLabel: "EDUCACIÓN", education: ["Software Systems Development, con honores · BCIT", "Bachiller en Ingeniería de Computación y Sistemas · USMP"], expertise: [ { label: "BACKEND", items: "Java 8–21 · Spring Boot · JPA / Hibernate · REST APIs" }, { label: "SISTEMAS", items: "Microservicios · Kafka · Integraciones por eventos" }, { label: "ENTREGA", items: "AWS · PostgreSQL · Docker · Kubernetes · CI/CD" } ] },
+  faq: { eyebrow: "ALGUNOS DETALLES PRÁCTICOS", title: "Antes de empezar.", items: [
+    { question: "¿Puedes trabajar con nuestro equipo de ingeniería?", answer: "Sí. Puedo asumir una implementación o integración con alcance definido, colaborando con tus ingenieros, equipo de producto y proceso de entrega." },
+    { question: "¿Seremos propietarios del código fuente?", answer: "La propiedad, licencias y entrega del código se definen en el acuerdo del proyecto antes de comenzar la implementación." },
+    { question: "¿Cuánto dura un proyecto?", answer: "El alcance y los plazos dependen de tus sistemas, requisitos y restricciones. Acordamos hitos y criterios de aceptación durante el diagnóstico." },
+    { question: "¿Ofreces soporte después de la entrega?", answer: "El soporte, la garantía y la disponibilidad pueden incluirse en el alcance inicial o definirse en un acuerdo independiente." },
+  ] },
+  contact: { eyebrow: "CONSTRUYAMOS ALGO QUE IMPORTE", title: "Tu próximo desafío.", accent: "Lo resolvemos.", description: "Cuéntame qué estás construyendo, qué obstáculos encuentras y cuál es tu siguiente objetivo.", project: "Tengo un proyecto", role: "Busco un ingeniero", email: "Enviar consulta de proyecto", roleEmail: "Conversar sobre un puesto", projectSubject: "Conversemos sobre un proyecto backend", roleSubject: "Oportunidad de ingeniería backend senior", note: "Una conversación directa. Próximos pasos claros.", copy: "Copiar correo electrónico", copied: "Correo copiado", copyFailed: "No se pudo copiar. Usa el enlace de correo.", download: "¿Prefieres un resumen?", footer: "Ingeniería backend. Construida con criterio.", rights: "Todos los derechos reservados." },
+  seo: { title: "Eduardo Zuñiga — Senior Backend Engineer y Consultor", description: "Ingeniería Java y Spring Boot para fintechs y empresas. Seguridad de identidad, integraciones de pagos y modernización backend." },
 };
-
 export const translations = { en, es };
-
-export const getContent = (language) =>
-  translations[language] || translations.en;
+export const getContent = (language) => translations[language] || translations.en;
+export const inquiryLink = (language, intent = "project") => {
+  const { contact } = getContent(language);
+  return `mailto:${profile.email}?subject=${encodeURIComponent(intent === "role" ? contact.roleSubject : contact.projectSubject)}`;
+};

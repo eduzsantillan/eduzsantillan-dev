@@ -1,96 +1,31 @@
-import { useState, useEffect } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from "../assets/img/logo.png";
-import navIcon1 from "../assets/img/nav-icon1.svg";
-import navIcon3 from "../assets/img/nav-icon3.svg";
-import { HashLink } from "react-router-hash-link";
-import { BrowserRouter as Router } from "react-router-dom";
-import { getContent } from "../content/siteContent";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { getContent } from "../content/siteContent";
+import { Brand, Icon } from "./UI";
 import { LanguageToggle } from "./LanguageToggle";
-
-const NavBar = () => {
-  const [activeLink, setActiveLink] = useState("home");
-  const [scrolled, setScrolled] = useState(false);
+export default function NavBar() {
   const { language } = useLanguage();
-  const content = getContent(language);
-  const { nav, contact } = content;
-
+  const { nav } = getContent(language);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const toggle = useRef(null);
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", onScroll);
-
-    return () => window.removeEventListener("scroll", onScroll);
+    const close = (event) => { if (open && event.key === "Escape") { setOpen(false); toggle.current?.focus(); } };
+    document.addEventListener("keydown", close);
+    return () => document.removeEventListener("keydown", close);
+  }, [open]);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1001px)");
+    const close = () => { if (media.matches) setOpen(false); };
+    media.addEventListener("change", close);
+    return () => media.removeEventListener("change", close);
   }, []);
-
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  };
-
-  return (
-    <Router>
-      <Navbar expand="xl" className={scrolled ? "scrolled" : ""}>
-        <Container>
-          <Navbar.Brand href="/">
-            <img className="navbar-brand" src={logo} alt="Logo" />
-          </Navbar.Brand>
-
-          <Navbar.Toggle aria-controls="basic-navbar-nav">
-            <span className="navbar-toggler-icon"></span>
-          </Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              {nav.links.map((link) => (
-                <Nav.Link
-                  key={link.href}
-                  href={link.href}
-                  className={
-                    activeLink === link.href.replace("#", "")
-                      ? "active navbar-link"
-                      : "navbar-link"
-                  }
-                  onClick={() => onUpdateActiveLink(link.href.replace("#", ""))}
-                >
-                  {link.label}
-                </Nav.Link>
-              ))}
-            </Nav>
-            <span className="navbar-text">
-              <LanguageToggle />
-              <div className="social-icon">
-                <a
-                  href={contact.linkedinUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={navIcon1} alt="LinkedIn" />
-                </a>
-                <a
-                  href={contact.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={navIcon3} alt="GitHub" />
-                </a>
-              </div>
-              <HashLink to="#contact">
-                <button className="vvd">
-                  <span>{nav.ctaLabel}</span>
-                </button>
-              </HashLink>
-            </span>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </Router>
-  );
-};
-
-export default NavBar;
+  useEffect(() => {
+    if (!window.IntersectionObserver) return;
+    const observer = new IntersectionObserver(entries => { for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id); }, { rootMargin: "-15% 0px -60% 0px" });
+    document.querySelectorAll("main > section[id]").forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+  const links = [["experience", nav.experience], ["consulting", nav.consulting], ["work", nav.work], ["contact", nav.contact]];
+  return <header className="site-header"><div className="container header-inner"><Brand label={nav.home} /><nav aria-label={language === "en" ? "Main navigation" : "Navegación principal"} className={open ? "navigation is-open" : "navigation"} id="main-navigation">{links.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={() => setOpen(false)}>{label}</a>)}</nav><div className="header-actions"><LanguageToggle /><a className="button button-header" href="#contact">{nav.cta}<Icon name="diagonal" size={16} /></a><button ref={toggle} className={`menu-button ${open ? "is-open" : ""}`} aria-label={open ? nav.close : nav.menu} aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen(v => !v)}><span /><span /></button></div></div></header>;
+}

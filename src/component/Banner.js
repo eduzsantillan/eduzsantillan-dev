@@ -1,108 +1,18 @@
-import { Container, Row, Col } from "react-bootstrap";
-import {
-  ArrowRight,
-  ChevronDown,
-  CheckCircleFill,
-} from "react-bootstrap-icons";
-import { motion } from "framer-motion";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { getContent } from "../content/siteContent";
 import { useLanguage } from "../context/LanguageContext";
-
-const Banner = () => {
+import { Icon } from "./UI";
+const ArchitectureScene = lazy(() => import("./ArchitectureScene"));
+export default function Banner() {
   const { language } = useLanguage();
-  const { hero } = getContent(language);
-
-  const scrollToCaseStudies = () => {
-    document
-      .getElementById("case-studies")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  return (
-    <section className="banner" id="home">
-      <div className="banner-gradient-orb banner-orb-1" />
-      <div className="banner-gradient-orb banner-orb-2" />
-
-      <Container>
-        <Row className="align-items-center justify-content-center">
-          <Col xs={12} lg={10} xl={9}>
-            <motion.div
-              className="banner-content"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <motion.span
-                className="hero-tag"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                {hero.tag}
-              </motion.span>
-
-              <h1>
-                <span className="headline-gradient">{hero.headline}</span>
-              </h1>
-
-              <p className="hero-subheadline">{hero.subheadline}</p>
-
-              <p className="hero-ideal-for">{hero.idealFor}</p>
-
-              <motion.div
-                className="proof-chips"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                {hero.proofChips.map((chip, index) => (
-                  <motion.div
-                    key={index}
-                    className="proof-chip"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    <CheckCircleFill className="proof-icon" />
-                    <span>{chip}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <motion.div
-                className="hero-ctas"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
-              >
-                <button className="primary-cta" onClick={scrollToContact}>
-                  <span>{hero.primaryCta}</span>
-                  <ArrowRight size={20} />
-                </button>
-                <button className="secondary-cta" onClick={scrollToCaseStudies}>
-                  <span>{hero.secondaryCta}</span>
-                  <ChevronDown size={18} />
-                </button>
-              </motion.div>
-            </motion.div>
-          </Col>
-        </Row>
-      </Container>
-
-      <motion.div
-        className="scroll-indicator"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-      >
-        <ChevronDown size={24} />
-      </motion.div>
-    </section>
-  );
-};
-
-export default Banner;
+  const { hero, common } = getContent(language);
+  const [reduced, setReduced] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const listener = () => setReduced(media.matches);
+    media.addEventListener("change", listener); return () => media.removeEventListener("change", listener);
+  }, []);
+  useEffect(() => { document.documentElement.dataset.motion = paused || reduced ? "paused" : "active"; }, [paused, reduced]);
+  return <section className="hero" id="home" aria-labelledby="hero-title"><div className="container hero-container"><div className="hero-topline"><span className="eyebrow"><i className="status-dot" />{hero.eyebrow}</span><span className="hero-edition">JAVA / FINTECH / ENTERPRISE</span></div><div className="hero-layout"><div className="hero-copy"><h1 id="hero-title"><span>{hero.line1}</span><span>{hero.line2} <em>{hero.accent}</em></span></h1><p className="hero-description">{hero.description}</p><div className="hero-actions"><a href="#experience" className="button button-accent">{hero.secondary}<Icon /></a><a href="?intent=project#contact" className="text-link">{common.project}<Icon name="diagonal" /></a></div><p className="hero-note"><span />{hero.note}</p></div><div className="hero-art"><div className="art-grid" /><div className="art-coordinates"><span>FIG. 01</span><span>ENGINEERING / IN MOTION</span></div><Suspense fallback={<div className="scene-loading" />}><ArchitectureScene paused={paused || reduced} /></Suspense><div className="art-label"><span className="art-label-marker" /><div><strong>{hero.sceneLabel}</strong><span>{hero.sceneCaption}</span></div></div><div className="art-bottom"><span>{hero.sceneHint}<span aria-hidden="true"> ↗</span></span><button className="motion-toggle" onClick={() => setPaused(value => !value)} disabled={reduced} aria-label={paused || reduced ? hero.resume : hero.pause} aria-pressed={paused || reduced}><Icon name={paused || reduced ? "play" : "pause"} size={15} /></button></div></div></div><div className="hero-bottom"><a href="#consulting" className="scroll-link"><Icon name="down" size={16} />{hero.scroll}</a><span>JAVA · FINTECH · ENTERPRISE</span></div></div><div className="expertise-strip"><div className="container">{hero.domains.map((domain, index) => <span key={domain}><i>{String(index + 1).padStart(2, "0")}</i>{domain}<span className="strip-star" aria-hidden="true">✳</span></span>)}</div></div></section>;
+}
