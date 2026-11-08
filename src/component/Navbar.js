@@ -26,6 +26,6 @@ export default function NavBar() {
     document.querySelectorAll("main > section[id]").forEach(el => observer.observe(el));
     return () => observer.disconnect();
   }, []);
-  const links = [["experience", nav.experience], ["consulting", nav.consulting], ["work", nav.work], ["contact", nav.contact]];
+  const links = [["consulting", nav.consulting], ["work", nav.work], ["experience", nav.experience], ["contact", nav.contact]];
   return <header className="site-header"><div className="container header-inner"><Brand label={nav.home} /><nav aria-label={language === "en" ? "Main navigation" : "Navegación principal"} className={open ? "navigation is-open" : "navigation"} id="main-navigation">{links.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={() => setOpen(false)}>{label}</a>)}</nav><div className="header-actions"><LanguageToggle /><a className="button button-header" href="#contact">{nav.cta}<Icon name="diagonal" size={16} /></a><button ref={toggle} className={`menu-button ${open ? "is-open" : ""}`} aria-label={open ? nav.close : nav.menu} aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen(v => !v)}><span /><span /></button></div></div></header>;
 }

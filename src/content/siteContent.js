@@ -1,107 +1,169 @@
 export const profile = {
-  name: "Eduardo Zuñiga", email: "eduzsantillan@gmail.com",
-  linkedin: "https://www.linkedin.com/in/eduzuniga/", github: "https://github.com/eduzsantillan",
+  name: "Eduardo Zuñiga",
+  email: "eduzsantillan@gmail.com",
+  linkedin: "https://www.linkedin.com/in/eduzuniga/",
+  github: "https://github.com/eduzsantillan",
   engineeringCV: "/assets/Eduardo_Zuniga_Senior_Backend_Engineer.pdf",
   consultingCV: "/assets/Eduardo_Zuniga_Software_Consulting.pdf",
 };
+
 const en = {
-  nav: { consulting: "Consulting", work: "Selected work", experience: "Experience", contact: "Contact", cta: "Let’s talk", menu: "Open navigation", close: "Close navigation", home: "Eduardo Zuñiga — home", language: "Switch to Spanish" },
-  common: { project: "Discuss a project", cv: "Download engineering CV", consultingCV: "Consulting profile", skip: "Skip to content", more: "Explore the work", back: "Back to top" },
-  hero: {
-    eyebrow: "Senior Backend Engineer & Independent Consultant", line1: "Complex systems.", line2: "Clear", accent: "solutions.",
-    description: "I build secure, reliable backend systems for fintech and enterprise teams. From financial integrations to identity workflows, I turn complex requirements into software that works.",
-    secondary: "Explore my experience", note: "Independent expertise. Thoughtful engineering.",
-    sceneLabel: "Connected by design", sceneCaption: "Security · Payments · Reliability", sceneHint: "Move to explore", scroll: "Scroll to discover", pause: "Pause animations", resume: "Resume animations",
-    domains: ["Java & Spring Boot", "Payments & Fintech", "Identity & Security", "Distributed Systems"],
+  nav: {
+    consulting: "Services", work: "Projects", experience: "About", contact: "Contact", cta: "Let’s talk",
+    menu: "Open navigation", close: "Close navigation", home: "Eduardo Zuñiga — home",
+    language: "Switch to Spanish",
   },
-  paths: {
-    client: { eyebrow: "FOR YOUR NEXT PROJECT", title: "A specialist for the hard parts.", description: "Scoped backend implementation, from discovery to handover.", cta: "Explore consulting" },
-    recruiter: { eyebrow: "FOR YOUR ENGINEERING TEAM", title: "Experience that goes deep.", description: "Senior engineering across financial and enterprise platforms.", cta: "View experience & CV" },
+  common: {
+    project: "Discuss your project", cv: "Download engineering CV",
+    consultingCV: "Consulting profile", skip: "Skip to content", back: "Back to top",
+  },
+  hero: {
+    eyebrow: "Software development consulting",
+    line1: "Custom software",
+    line2: "for your business.",
+    description: "I help product teams integrate payments, secure customer accounts, and improve the software they already rely on.",
+    secondary: "See projects",
+    pause: "Pause animations",
+    resume: "Resume animations",
   },
   services: {
-    eyebrow: "01 / HOW I CAN HELP", title: "Critical systems.", accent: "Considered engineering.", intro: "Three areas of focus. One engineer accountable for turning your requirements into maintainable, production-ready software.",
-    deliverables: "WHAT WE CAN BUILD", cta: "Let’s discuss your challenge", scope: "Project-based engagements · Scope and timeline agreed during discovery",
+    title: "What I can build for you",
     items: [
-      { id: "identity", number: "01", short: "Identity & security", title: "Protect the moments that matter.", description: "Make onboarding, account recovery, and sensitive financial actions more secure, without losing sight of the user experience.", deliverables: ["KYC & onboarding integrations", "Account recovery & trusted devices", "Authorization controls & audit trails"], tags: ["Identity", "Account security"] },
-      { id: "payments", number: "02", short: "Payments & integrations", title: "Connect systems. Keep business moving.", description: "Bring financial APIs and internal services together with workflows that account for errors, retries, and real-world complexity.", deliverables: ["Payment & partner API integrations", "Event-driven financial workflows", "Failure handling & observability"], tags: ["Payments", "APIs"] },
-      { id: "modernization", number: "03", short: "Java & reliability", title: "Move your platform forward.", description: "Untangle an evolving Java backend, address performance bottlenecks, and build a more maintainable foundation for your team.", deliverables: ["Java service modernization", "Modularization & performance diagnostics", "Integration tests & delivery pipelines"], tags: ["Java", "Architecture"] },
+      { id: "payments", title: "Payments & integrations", description: "Connect payment providers, banks, and third-party APIs to your product." },
+      { id: "identity", title: "Identity & account security", description: "Add identity verification and protect account recovery and sensitive transactions." },
+      { id: "modernization", title: "Backend modernization", description: "Improve performance and make your existing Java software easier to maintain." },
     ],
   },
   work: {
-    eyebrow: "02 / SELECTED ENGINEERING", title: "Built for the", accent: "real world.", intro: "A closer look at work across financial and enterprise systems. Public summaries, with proprietary details kept private.",
-    open: "Explore case study", close: "Close case study", labels: { challenge: "The challenge", approach: "The approach", responsibility: "My contribution", outcome: "What it enabled" },
+    title: "Selected projects",
+    open: "Explore case study",
+    close: "Close case study",
     items: [
-      { slug: "account-protection", type: "identity", category: "FINTECH / IDENTITY", title: "Trust, built into sensitive account flows.", summary: "KYC, device trust, and account protection across critical customer journeys.", challenge: "Sensitive operations such as account recovery and transfers need coordinated identity and authorization checks.", approach: "Connect KYC workflows with verification and trusted-device controls at sensitive points in the customer journey.", responsibility: "Implemented end-to-end KYC flows and account-protection controls for password recovery and financial transfers.", outcome: "Identity verification and account-protection checks became part of backend workflows supporting sensitive actions.", technologies: ["Java", "Spring Boot", "Identity workflows"], confidentialityNote: "Implementation details and internal security policies are intentionally omitted.", audienceTags: ["Identity", "Security"] },
-      { slug: "financial-integrations", type: "payments", category: "FINTECH / INTEGRATIONS", title: "Connecting the moving parts of payments.", summary: "Global-account capabilities, payment integrations, and contractor payment requests.", challenge: "Financial features require multiple services and external integrations to work together across a payment lifecycle.", approach: "Develop backend capabilities around clear domain models, APIs, and event-driven workflows.", responsibility: "Built global-account and payment integration capabilities, and delivered the domain model, APIs, and workflows for payment requests.", outcome: "Supported integrated financial account capabilities and enabled contractors to request funds through the platform.", technologies: ["Spring Boot", "Kafka", "PostgreSQL"], confidentialityNote: "Partner names, financial data, and internal architecture are not disclosed.", audienceTags: ["Payments", "Integrations"] },
-      { slug: "enterprise-modernization", type: "modernization", category: "ENTERPRISE / MODERNIZATION", title: "A clearer structure for enterprise Java.", summary: "Domain-based modularization and regression validation in a large enterprise codebase.", challenge: "A large Java application needed clearer boundaries between business responsibilities while preserving existing workflows.", approach: "Contribute to domain-aligned deployment restructuring, investigate workflow defects, and validate changes across modules.", responsibility: "Contributed to ERP domain restructuring, corrected business workflow defects, and ran regression validation in a multi-module environment.", outcome: "Clearer separation of application responsibilities, supported by regression checks across the Java codebase.", technologies: ["Java", "Payara", "Regression testing"], confidentialityNote: "A summary of my contribution, without disclosing proprietary architecture.", audienceTags: ["Enterprise", "Reliability"] },
-    ],
-  },
-  process: {
-    eyebrow: "03 / WORKING TOGETHER", title: "Clear scope.", accent: "Visible progress.", intro: "You work directly with me, from the first technical conversation to the final handover.",
-    steps: [
-      { title: "Understand", description: "We discuss your goals, existing systems, constraints, and what success looks like.", output: "Shared understanding" },
-      { title: "Define", description: "We agree on deliverables, milestones, acceptance criteria, pricing, and ownership terms.", output: "A scoped proposal" },
-      { title: "Build", description: "Incremental implementation with demos, tests, and documentation as the work progresses.", output: "Reviewable milestones" },
-      { title: "Hand over", description: "Agreed source-code delivery, deployment guidance, knowledge transfer, and support terms.", output: "A confident handover" },
+      {
+        slug: "account-protection", type: "identity", title: "Safer account recovery",
+        summary: "Added identity checks to password recovery and financial transfers.",
+        detail: "I implemented end-to-end KYC flows and trusted-device controls for sensitive operations.",
+      },
+      {
+        slug: "financial-integrations", type: "payments", title: "Contractor payment requests",
+        summary: "Enabled contractors to request funds directly on the platform.",
+        detail: "I built the payment request APIs and workflow and contributed to global account and payment integrations.",
+      },
+      {
+        slug: "enterprise-modernization", type: "modernization", title: "Java ERP modernization",
+        summary: "Reorganized a Java ERP around business domains.",
+        detail: "I contributed to the restructuring, fixed workflow defects, and ran regression tests across modules.",
+      },
     ],
   },
   experience: {
-    eyebrow: "04 / THE ENGINEER BEHIND THE WORK", title: "Senior expertise.", accent: "Direct collaboration.", description: "I’m Eduardo, a backend-focused software engineer with 10 years of experience delivering financial and enterprise platforms. I connect technical decisions with the business problems they need to solve.", note: "Java is my core. Financial systems, identity, and production reliability are where I bring it to life.", years: "Years in software engineering", roleCta: "Discuss an engineering role", earlier: "Previously: Profuturo AFP · Inetum · Effitec IT",
-    roles: [
-      { company: "Martin Bros.", via: "via FullStack Labs", period: "2026", title: "Senior Full Stack Engineer · Contract", description: "Enterprise Java, ERP domain restructuring, and regression validation across a multi-module codebase." },
-      { company: "Ontop", via: "Fintech", period: "2023 — 2026", title: "Senior Backend Engineer", description: "KYC, trusted-device controls, payment integrations, global-account capabilities, and distributed backend services." },
-      { company: "SURA · Integra AFP", via: "Financial services", period: "2021 — 2023", title: "Full Stack Engineer · Backend Focus", description: "AWS-powered identity verification, account session security, and customer-service automation." },
-    ],
-    educationLabel: "EDUCATION", education: ["Software Systems Development, Honors · BCIT", "Bachelor’s Degree, Computer Science Engineering · USMP"],
-    expertise: [ { label: "BACKEND", items: "Java 8–21 · Spring Boot · JPA / Hibernate · REST APIs" }, { label: "SYSTEMS", items: "Microservices · Kafka · Event-driven integrations" }, { label: "DELIVERY", items: "AWS · PostgreSQL · Docker · Kubernetes · CI/CD" } ],
+    title: "Work directly with me",
+    description: "I’m Eduardo, a software engineer with over 10 years of experience, including work at Ontop, SURA, and Martin Bros.",
+    roleCta: "Discuss an engineering role",
   },
-  faq: { eyebrow: "A FEW PRACTICAL DETAILS", title: "Before we start.", items: [
-    { question: "Can you work with our existing engineering team?", answer: "Yes. I can take on a clearly scoped implementation or integration while collaborating with your engineers, product team, and existing delivery process." },
-    { question: "Will we own the source code?", answer: "Code ownership, licensing, and source-code handover are defined in the project agreement before implementation starts." },
-    { question: "How long does an engagement take?", answer: "Scope and timeline depend on your systems, requirements, and constraints. We agree on milestones and acceptance criteria during discovery rather than assuming one timeline fits every project." },
-    { question: "Do you provide ongoing support?", answer: "Support, warranty coverage, and availability can be included in the original scope or defined in a separate agreement." },
-  ] },
-  contact: { eyebrow: "LET’S BUILD SOMETHING THAT MATTERS", title: "Your next challenge.", accent: "Let’s solve it.", description: "Tell me what you’re building, what’s getting in the way, and where you want to go next.", project: "I have a project", role: "I’m hiring an engineer", email: "Send a project inquiry", roleEmail: "Discuss a role", projectSubject: "Let’s discuss a backend project", roleSubject: "Senior backend engineering opportunity", note: "A direct conversation. Clear next steps.", copy: "Copy email address", copied: "Email copied", copyFailed: "Copy unavailable. Use the email link.", download: "Prefer a quick overview?", footer: "Backend engineering. Built with intention.", rights: "All rights reserved." },
-  seo: { title: "Eduardo Zuñiga — Senior Backend Engineer & Consultant", description: "Specialized Java and Spring Boot engineering for fintech and enterprise teams. Identity security, payment integrations, and backend modernization." },
+  contact: {
+    title: "Have a project in mind?",
+    description: "Tell me what you need and we’ll define the first deliverable together.",
+    roleTitle: "Hiring a backend engineer?",
+    roleDescription: "Share a few details about the role and your team.",
+    email: "Email me about your project",
+    roleEmail: "Discuss a role",
+    projectSubject: "Software development project",
+    roleSubject: "Senior backend engineering opportunity",
+    steps: ["Define scope", "Build", "Hand over"],
+    copy: "Copy email address",
+    copied: "Email copied",
+    copyFailed: "Copy unavailable. Use the email link.",
+    footer: "Independent software consultant",
+    rights: "All rights reserved.",
+  },
+  seo: {
+    title: "Eduardo Zuñiga — Software Development Consultant",
+    description: "Independent software development consulting for product teams. Payments, identity and account security, and Java modernization.",
+  },
 };
+
 const es = {
-  nav: { consulting: "Servicios", work: "Proyectos", experience: "Experiencia", contact: "Contacto", cta: "Conversemos", menu: "Abrir navegación", close: "Cerrar navegación", home: "Eduardo Zuñiga — inicio", language: "Cambiar a inglés" },
-  common: { project: "Hablemos de tu proyecto", cv: "Descargar CV de ingeniería", consultingCV: "Perfil de consultoría", skip: "Ir al contenido", more: "Explorar proyectos", back: "Volver al inicio" },
-  hero: { eyebrow: "Senior Backend Engineer y Consultor Independiente", line1: "Sistemas complejos.", line2: "Soluciones", accent: "claras.", description: "Construyo sistemas backend seguros y confiables para fintechs y empresas. Desde integraciones financieras hasta flujos de identidad, convierto requisitos complejos en software que funciona.", secondary: "Explorar mi experiencia", note: "Experiencia independiente. Ingeniería con criterio.", sceneLabel: "Conectados por diseño", sceneCaption: "Seguridad · Pagos · Confiabilidad", sceneHint: "Mueve el cursor para explorar", scroll: "Descubre más", pause: "Pausar animaciones", resume: "Reanudar animaciones", domains: ["Java y Spring Boot", "Pagos y Fintech", "Identidad y Seguridad", "Sistemas Distribuidos"] },
-  paths: { client: { eyebrow: "PARA TU PRÓXIMO PROYECTO", title: "Un especialista en lo complejo.", description: "Implementación backend con alcance definido, del diagnóstico a la entrega.", cta: "Explorar servicios" }, recruiter: { eyebrow: "PARA TU EQUIPO DE INGENIERÍA", title: "Experiencia que va a fondo.", description: "Ingeniería senior en plataformas financieras y empresariales.", cta: "Ver experiencia y CV" } },
-  services: { eyebrow: "01 / CÓMO PUEDO AYUDARTE", title: "Sistemas críticos.", accent: "Ingeniería con criterio.", intro: "Tres especialidades. Un ingeniero responsable de convertir tus requisitos en software mantenible y listo para producción.", deliverables: "QUÉ PODEMOS CONSTRUIR", cta: "Conversemos sobre tu desafío", scope: "Proyectos con alcance definido · Plazos acordados durante el diagnóstico", items: [
-    { id: "identity", number: "01", short: "Identidad y seguridad", title: "Protege los momentos que importan.", description: "Refuerza el onboarding, la recuperación de cuentas y las operaciones financieras sensibles, cuidando la experiencia del usuario.", deliverables: ["Integraciones de KYC y onboarding", "Recuperación de cuentas y dispositivos de confianza", "Autorización y trazabilidad"], tags: ["Identidad", "Seguridad"] },
-    { id: "payments", number: "02", short: "Pagos e integraciones", title: "Conecta sistemas. Impulsa tu negocio.", description: "Integra APIs financieras y servicios internos con flujos que contemplan errores, reintentos y la complejidad del mundo real.", deliverables: ["Integraciones de pagos y APIs de terceros", "Flujos financieros orientados a eventos", "Manejo de errores y observabilidad"], tags: ["Pagos", "APIs"] },
-    { id: "modernization", number: "03", short: "Java y confiabilidad", title: "Haz avanzar tu plataforma.", description: "Simplifica un backend Java en evolución, resuelve cuellos de botella y construye una base más mantenible para tu equipo.", deliverables: ["Modernización de servicios Java", "Modularización y diagnóstico de rendimiento", "Pruebas de integración y pipelines"], tags: ["Java", "Arquitectura"] },
-  ] },
-  work: { eyebrow: "02 / PROYECTOS SELECCIONADOS", title: "Ingeniería para el", accent: "mundo real.", intro: "Una mirada al trabajo en sistemas financieros y empresariales. Resúmenes públicos que preservan los detalles confidenciales.", open: "Explorar caso", close: "Cerrar caso", labels: { challenge: "El desafío", approach: "El enfoque", responsibility: "Mi contribución", outcome: "Qué hizo posible" }, items: [
-    { slug: "account-protection", type: "identity", category: "FINTECH / IDENTIDAD", title: "Confianza en los flujos de cuenta sensibles.", summary: "KYC, dispositivos de confianza y protección de cuentas en recorridos críticos.", challenge: "La recuperación de cuentas y las transferencias necesitan controles coordinados de identidad y autorización.", approach: "Conectar los flujos KYC con verificación y dispositivos de confianza en momentos sensibles.", responsibility: "Implementé flujos KYC de extremo a extremo y controles de protección para recuperación de contraseñas y transferencias.", outcome: "La verificación de identidad y la protección de cuentas pasaron a formar parte de los flujos backend de operaciones sensibles.", technologies: ["Java", "Spring Boot", "Flujos de identidad"], confidentialityNote: "Se omiten detalles de implementación y políticas internas de seguridad.", audienceTags: ["Identidad", "Seguridad"] },
-    { slug: "financial-integrations", type: "payments", category: "FINTECH / INTEGRACIONES", title: "Conectando cada pieza de los pagos.", summary: "Cuentas globales, integraciones de pagos y solicitudes de fondos de contratistas.", challenge: "Las funcionalidades financieras requieren coordinar varios servicios e integraciones externas durante el ciclo de un pago.", approach: "Desarrollar capacidades backend con modelos de dominio claros, APIs y flujos orientados a eventos.", responsibility: "Desarrollé capacidades de cuentas globales e integraciones de pagos, además del modelo, APIs y flujos de solicitudes de pago.", outcome: "Se habilitaron capacidades financieras integradas y solicitudes de fondos para contratistas.", technologies: ["Spring Boot", "Kafka", "PostgreSQL"], confidentialityNote: "No se exponen nombres de socios, datos financieros ni arquitectura interna.", audienceTags: ["Pagos", "Integraciones"] },
-    { slug: "enterprise-modernization", type: "modernization", category: "EMPRESAS / MODERNIZACIÓN", title: "Una estructura más clara para Java empresarial.", summary: "Modularización por dominios y validación de regresiones en un sistema empresarial.", challenge: "Una aplicación Java necesitaba límites más claros entre responsabilidades sin alterar los flujos existentes.", approach: "Contribuir a la reorganización de despliegues por dominio, investigar defectos y validar cambios entre módulos.", responsibility: "Contribuí a la reestructuración de dominios ERP, corregí defectos funcionales y ejecuté validaciones de regresión.", outcome: "Una separación más clara de responsabilidades, respaldada por validaciones de regresión en el código Java.", technologies: ["Java", "Payara", "Pruebas de regresión"], confidentialityNote: "Resumen de mi contribución; no revela arquitectura propietaria.", audienceTags: ["Empresas", "Confiabilidad"] },
-  ] },
-  process: { eyebrow: "03 / CÓMO TRABAJAMOS", title: "Alcance claro.", accent: "Avance visible.", intro: "Trabajas directamente conmigo, desde la primera conversación técnica hasta la entrega final.", steps: [
-    { title: "Entender", description: "Conversamos sobre tus objetivos, sistemas, restricciones y qué significa una entrega exitosa.", output: "Contexto compartido" },
-    { title: "Definir", description: "Acordamos entregables, hitos, criterios de aceptación, inversión y términos de propiedad.", output: "Una propuesta concreta" },
-    { title: "Construir", description: "Implementación incremental con demos, pruebas y documentación durante el desarrollo.", output: "Avances revisables" },
-    { title: "Entregar", description: "Código acordado, guía de despliegue, transferencia de conocimiento y condiciones de soporte.", output: "Una entrega completa" },
-  ] },
-  experience: { eyebrow: "04 / EL INGENIERO DETRÁS DEL TRABAJO", title: "Experiencia senior.", accent: "Colaboración directa.", description: "Soy Eduardo, ingeniero de software especializado en backend con 10 años de experiencia en plataformas financieras y empresariales. Conecto las decisiones técnicas con los problemas de negocio que deben resolver.", note: "Java es mi base. Los sistemas financieros, la identidad y la confiabilidad en producción son donde la pongo en práctica.", years: "Años en ingeniería de software", roleCta: "Conversar sobre una oportunidad", earlier: "Anteriormente: Profuturo AFP · Inetum · Effitec IT", roles: [
-    { company: "Martin Bros.", via: "vía FullStack Labs", period: "2026", title: "Senior Full Stack Engineer · Contrato", description: "Java empresarial, reestructuración de dominios ERP y validación de regresiones en múltiples módulos." },
-    { company: "Ontop", via: "Fintech", period: "2023 — 2026", title: "Senior Backend Engineer", description: "KYC, dispositivos de confianza, integraciones de pagos, cuentas globales y servicios backend distribuidos." },
-    { company: "SURA · Integra AFP", via: "Servicios financieros", period: "2021 — 2023", title: "Full Stack Engineer · Enfoque Backend", description: "Verificación de identidad con AWS, seguridad de sesiones y automatización de atención al cliente." },
-  ], educationLabel: "EDUCACIÓN", education: ["Software Systems Development, con honores · BCIT", "Bachiller en Ingeniería de Computación y Sistemas · USMP"], expertise: [ { label: "BACKEND", items: "Java 8–21 · Spring Boot · JPA / Hibernate · REST APIs" }, { label: "SISTEMAS", items: "Microservicios · Kafka · Integraciones por eventos" }, { label: "ENTREGA", items: "AWS · PostgreSQL · Docker · Kubernetes · CI/CD" } ] },
-  faq: { eyebrow: "ALGUNOS DETALLES PRÁCTICOS", title: "Antes de empezar.", items: [
-    { question: "¿Puedes trabajar con nuestro equipo de ingeniería?", answer: "Sí. Puedo asumir una implementación o integración con alcance definido, colaborando con tus ingenieros, equipo de producto y proceso de entrega." },
-    { question: "¿Seremos propietarios del código fuente?", answer: "La propiedad, licencias y entrega del código se definen en el acuerdo del proyecto antes de comenzar la implementación." },
-    { question: "¿Cuánto dura un proyecto?", answer: "El alcance y los plazos dependen de tus sistemas, requisitos y restricciones. Acordamos hitos y criterios de aceptación durante el diagnóstico." },
-    { question: "¿Ofreces soporte después de la entrega?", answer: "El soporte, la garantía y la disponibilidad pueden incluirse en el alcance inicial o definirse en un acuerdo independiente." },
-  ] },
-  contact: { eyebrow: "CONSTRUYAMOS ALGO QUE IMPORTE", title: "Tu próximo desafío.", accent: "Lo resolvemos.", description: "Cuéntame qué estás construyendo, qué obstáculos encuentras y cuál es tu siguiente objetivo.", project: "Tengo un proyecto", role: "Busco un ingeniero", email: "Enviar consulta de proyecto", roleEmail: "Conversar sobre un puesto", projectSubject: "Conversemos sobre un proyecto backend", roleSubject: "Oportunidad de ingeniería backend senior", note: "Una conversación directa. Próximos pasos claros.", copy: "Copiar correo electrónico", copied: "Correo copiado", copyFailed: "No se pudo copiar. Usa el enlace de correo.", download: "¿Prefieres un resumen?", footer: "Ingeniería backend. Construida con criterio.", rights: "Todos los derechos reservados." },
-  seo: { title: "Eduardo Zuñiga — Senior Backend Engineer y Consultor", description: "Ingeniería Java y Spring Boot para fintechs y empresas. Seguridad de identidad, integraciones de pagos y modernización backend." },
+  nav: {
+    consulting: "Servicios", work: "Proyectos", experience: "Sobre mí", contact: "Contacto", cta: "Conversemos",
+    menu: "Abrir navegación", close: "Cerrar navegación", home: "Eduardo Zuñiga — inicio",
+    language: "Cambiar a inglés",
+  },
+  common: {
+    project: "Hablemos de tu proyecto", cv: "Descargar CV de ingeniería",
+    consultingCV: "Perfil de consultoría", skip: "Ir al contenido", back: "Volver al inicio",
+  },
+  hero: {
+    eyebrow: "Consultoría en desarrollo de software",
+    line1: "Software a medida",
+    line2: "para tu negocio.",
+    description: "Ayudo a equipos de producto a integrar pagos, proteger cuentas y mejorar el software que ya usan.",
+    secondary: "Ver proyectos",
+    pause: "Pausar animaciones",
+    resume: "Reanudar animaciones",
+  },
+  services: {
+    title: "En qué puedo ayudarte",
+    items: [
+      { id: "payments", title: "Pagos e integraciones", description: "Conecta tu producto con pasarelas de pago, bancos y APIs de terceros." },
+      { id: "identity", title: "Identidad y seguridad", description: "Verifica la identidad de tus usuarios y protege la recuperación de cuentas y las operaciones sensibles." },
+      { id: "modernization", title: "Modernización de backend", description: "Mejora el rendimiento y facilita el mantenimiento de tus sistemas Java." },
+    ],
+  },
+  work: {
+    title: "Proyectos seleccionados",
+    open: "Explorar caso",
+    close: "Cerrar caso",
+    items: [
+      {
+        slug: "account-protection", type: "identity", title: "Recuperación de cuentas segura",
+        summary: "Incorporé controles de identidad en la recuperación de contraseñas y las transferencias.",
+        detail: "Implementé flujos de verificación de identidad (KYC) de extremo a extremo y controles de dispositivos de confianza.",
+      },
+      {
+        slug: "financial-integrations", type: "payments", title: "Solicitudes de pago",
+        summary: "Los contratistas pudieron solicitar fondos directamente desde la plataforma.",
+        detail: "Desarrollé las APIs y el flujo de solicitudes de pago, y contribuí a las integraciones de pagos y cuentas globales.",
+      },
+      {
+        slug: "enterprise-modernization", type: "modernization", title: "Modernización de un ERP Java",
+        summary: "Reorganizamos un ERP en Java por dominios de negocio.",
+        detail: "Contribuí a la reestructuración, corregí defectos en flujos de negocio y ejecuté pruebas de regresión entre módulos.",
+      },
+    ],
+  },
+  experience: {
+    title: "Trabaja directamente conmigo",
+    description: "Soy Eduardo, ingeniero de software con más de 10 años de experiencia, incluyendo proyectos en Ontop, SURA y Martin Bros.",
+    roleCta: "Conversemos sobre una vacante",
+  },
+  contact: {
+    title: "¿Tienes un proyecto en mente?",
+    description: "Cuéntame qué necesitas y definimos juntos qué entregar primero.",
+    roleTitle: "¿Buscas un ingeniero backend?",
+    roleDescription: "Cuéntame sobre la vacante y tu equipo.",
+    email: "Escríbeme sobre tu proyecto",
+    roleEmail: "Conversar sobre un puesto",
+    projectSubject: "Proyecto de desarrollo de software",
+    roleSubject: "Oportunidad de ingeniería backend senior",
+    steps: ["Definir alcance", "Construir", "Entregar"],
+    copy: "Copiar correo electrónico",
+    copied: "Correo copiado",
+    copyFailed: "No se pudo copiar. Usa el enlace de correo.",
+    footer: "Consultor independiente de software",
+    rights: "Todos los derechos reservados.",
+  },
+  seo: {
+    title: "Eduardo Zuñiga — Consultoría en Desarrollo de Software",
+    description: "Consultoría de software para equipos de producto. Pagos, verificación de identidad, seguridad de cuentas y modernización Java.",
+  },
 };
+
 export const translations = { en, es };
 export const getContent = (language) => translations[language] || translations.en;
+
 export const inquiryLink = (language, intent = "project") => {
   const { contact } = getContent(language);
-  return `mailto:${profile.email}?subject=${encodeURIComponent(intent === "role" ? contact.roleSubject : contact.projectSubject)}`;
+  const subject = intent === "role" ? contact.roleSubject : contact.projectSubject;
+  return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}`;
 };

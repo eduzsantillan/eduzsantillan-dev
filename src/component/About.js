@@ -1,8 +1,28 @@
-import { getContent, profile, inquiryLink } from "../content/siteContent";
+import { getContent, profile } from "../content/siteContent";
 import { useLanguage } from "../context/LanguageContext";
-import { Icon, Reveal } from "./UI";
+import { Icon } from "./UI";
+
 export function About() {
   const { language } = useLanguage();
   const { experience, common } = getContent(language);
-  return <section className="experience light-section section-pad" id="experience"><span id="about" className="anchor-alias" /><div className="container"><p className="eyebrow">{experience.eyebrow}</p><div className="experience-layout"><Reveal className="experience-profile"><h2>{experience.title}<br /><em>{experience.accent}</em></h2><p className="profile-description">{experience.description}</p><p className="profile-note">{experience.note}</p><div className="experience-stat"><span>10<span>+</span></span><p>{experience.years}</p></div><a className="button button-dark" download href={profile.engineeringCV}>{common.cv}<Icon name="download" size={18} /></a><a className="text-link role-link" href={inquiryLink(language, "role")}>{experience.roleCta}<Icon name="diagonal" size={17} /></a></Reveal><div className="experience-history">{experience.roles.map((role, index) => <Reveal key={role.company} className="career-entry" delay={index * 60}><div className="career-meta"><span>{role.period}</span><span>{role.via}</span></div><h3>{role.company}</h3><p className="career-role">{role.title}</p><p>{role.description}</p></Reveal>)}<p className="earlier-roles">{experience.earlier}</p><div className="education"><p className="eyebrow">{experience.educationLabel}</p>{experience.education.map(item => <p key={item}>{item}</p>)}</div></div></div><div className="expertise-groups">{experience.expertise.map(group => <div key={group.label}><span className="eyebrow">{group.label}</span><p>{group.items}</p></div>)}</div></div></section>;
+
+  return (
+    <section className="experience light-section section-pad" id="experience">
+      <span id="about" className="anchor-alias" />
+      <div className="container compact-about">
+        <div>
+          <h2>{experience.title}</h2>
+          <p className="profile-description">{experience.description}</p>
+        </div>
+        <div className="about-actions">
+          <a className="text-link" download href={profile.engineeringCV}>
+            {common.cv}<Icon name="download" size={16} />
+          </a>
+          <a className="text-link" href="?intent=role#contact">
+            {experience.roleCta}<Icon name="diagonal" size={16} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }

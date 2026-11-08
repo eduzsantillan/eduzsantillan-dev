@@ -30,9 +30,6 @@ export function Reveal({ children, className = "", delay = 0, ...props }) {
   }, []);
   return <div ref={ref} className={className} style={{ "--reveal-delay": `${delay}ms` }} {...props}>{children}</div>;
 }
-export function SectionHeading({ eyebrow, title, accent, intro, light = false }) {
-  return <Reveal className={`section-heading ${light ? "on-light" : ""}`}><p className="eyebrow">{eyebrow}</p><div className="heading-layout"><h2>{title}<br /><em>{accent}</em></h2>{intro && <p className="section-intro">{intro}</p>}</div></Reveal>;
-}
 export function Brand({ label }) {
   return <a className="brand" href="#home" aria-label={label}><span className="brand-symbol" aria-hidden="true">e<span>z</span><i /></span><span>EDUARDO<br />ZUÑIGA<span className="brand-dot">.</span></span></a>;
 }

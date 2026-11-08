@@ -16,32 +16,32 @@ const renderWebsite = async () => {
   await act(async () => { render(<App />); });
 };
 
-test("offers direct engineering and consulting paths with valid anchors", async () => {
+test("leads with consulting and keeps project and engineering links reachable", async () => {
   await renderWebsite();
   expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
-  const paths = screen.getByRole("region", { name: "Ways to work together" });
-  expect(within(paths).getByRole("link", { name: /View experience & CV/ })).toHaveAttribute("href", "#experience");
-  expect(within(paths).getByRole("link", { name: /Explore consulting/ })).toHaveAttribute("href", "#consulting");
+  const hero = screen.getByRole("region", { name: "Custom software for your business." });
+  expect(within(hero).getByRole("link", { name: "Discuss your project" })).toHaveAttribute("href", "./#contact");
+  expect(within(hero).getByRole("link", { name: "See projects" })).toHaveAttribute("href", "#work");
+  expect(screen.getByRole("link", { name: "Discuss an engineering role" })).toHaveAttribute("href", "?intent=role#contact");
   for (const link of document.querySelectorAll('a[href^="#"]')) {
     expect(document.getElementById(link.getAttribute("href").slice(1))).not.toBeNull();
   }
 });
 
-test("changes the inquiry and downloadable CV when a recruiter selects a role", async () => {
+test("opens a project inquiry and offers the consulting profile by default", async () => {
   await renderWebsite();
   expect(screen.getByRole("link", { name: "Consulting profile" })).toHaveAttribute("href", "/assets/Eduardo_Zuniga_Software_Consulting.pdf");
-  userEvent.click(screen.getByRole("radio", { name: "I’m hiring an engineer" }));
-  const inquiry = screen.getByRole("link", { name: "Discuss a role" });
-  expect(decodeURIComponent(inquiry.getAttribute("href"))).toContain("Senior backend engineering opportunity");
-  expect(screen.queryByRole("link", { name: "Consulting profile" })).not.toBeInTheDocument();
-  expect(screen.getAllByRole("link", { name: "Download engineering CV" })).toHaveLength(2);
+  const inquiry = screen.getByRole("link", { name: "Email me about your project" });
+  expect(decodeURIComponent(inquiry.getAttribute("href"))).toContain("Software development project");
 });
 
 test("supports direct role inquiries", async () => {
   window.history.replaceState({}, "", "/?intent=role#contact");
   await renderWebsite();
-  expect(screen.getByRole("radio", { name: "I’m hiring an engineer" })).toBeChecked();
-  expect(screen.getByRole("link", { name: "Discuss a role" })).toBeInTheDocument();
+  const inquiry = screen.getByRole("link", { name: "Discuss a role" });
+  expect(decodeURIComponent(inquiry.getAttribute("href"))).toContain("Senior backend engineering opportunity");
+  expect(screen.queryByRole("link", { name: "Consulting profile" })).not.toBeInTheDocument();
+  expect(screen.getAllByRole("link", { name: "Download engineering CV" })).toHaveLength(2);
 });
 
 test("persists Spanish and updates the document language and metadata", async () => {
