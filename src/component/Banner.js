@@ -39,7 +39,7 @@ export default function Banner() {
           <h1 id="hero-title"><span>{hero.line1}</span>{" "}<span><em>{hero.line2}</em></span></h1>
           <p className="hero-description">{hero.description}</p>
           <div className="hero-actions">
-            <a href="./#contact" className="button button-accent">{common.project}<Icon name="diagonal" /></a>
+            <a href="#contact" className="button button-accent">{common.project}<Icon name="diagonal" /></a>
             <a href="#work" className="text-link">{hero.secondary}<Icon /></a>
           </div>
         </div>

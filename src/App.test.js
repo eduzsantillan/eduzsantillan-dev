@@ -16,32 +16,32 @@ const renderWebsite = async () => {
   await act(async () => { render(<App />); });
 };
 
-test("leads with consulting and keeps project and engineering links reachable", async () => {
+test("leads with consulting and keeps project and experience links reachable", async () => {
   await renderWebsite();
   expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
   const hero = screen.getByRole("region", { name: "Custom software for your business." });
-  expect(within(hero).getByRole("link", { name: "Discuss your project" })).toHaveAttribute("href", "./#contact");
+  expect(within(hero).getByRole("link", { name: "Discuss your project" })).toHaveAttribute("href", "#contact");
   expect(within(hero).getByRole("link", { name: "See projects" })).toHaveAttribute("href", "#work");
-  expect(screen.getByRole("link", { name: "Discuss an engineering role" })).toHaveAttribute("href", "?intent=role#contact");
+  expect(screen.getByRole("link", { name: "View professional profile (PDF)" })).toHaveAttribute("href", "/assets/Eduardo_Zuniga_Software_Consulting.pdf");
   for (const link of document.querySelectorAll('a[href^="#"]')) {
     expect(document.getElementById(link.getAttribute("href").slice(1))).not.toBeNull();
   }
 });
 
-test("opens a project inquiry and offers the consulting profile by default", async () => {
+test("offers a prefilled project email and a LinkedIn alternative", async () => {
   await renderWebsite();
-  expect(screen.getByRole("link", { name: "Consulting profile" })).toHaveAttribute("href", "/assets/Eduardo_Zuniga_Software_Consulting.pdf");
-  const inquiry = screen.getByRole("link", { name: "Email me about your project" });
+  const inquiry = screen.getByRole("link", { name: "Write me an email" });
   expect(decodeURIComponent(inquiry.getAttribute("href"))).toContain("Software development project");
+  expect(decodeURIComponent(inquiry.getAttribute("href"))).toContain("What we need to solve:");
+  expect(screen.getByRole("link", { name: "Find me on LinkedIn" })).toHaveAttribute("href", "https://www.linkedin.com/in/eduzuniga/");
 });
 
-test("supports direct role inquiries", async () => {
+test("shows project contact even from an old role link", async () => {
   window.history.replaceState({}, "", "/?intent=role#contact");
   await renderWebsite();
-  const inquiry = screen.getByRole("link", { name: "Discuss a role" });
-  expect(decodeURIComponent(inquiry.getAttribute("href"))).toContain("Senior backend engineering opportunity");
-  expect(screen.queryByRole("link", { name: "Consulting profile" })).not.toBeInTheDocument();
-  expect(screen.getAllByRole("link", { name: "Download engineering CV" })).toHaveLength(2);
+  expect(screen.getByRole("heading", { name: "What do you need to build?" })).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "Write me an email" })).toBeInTheDocument();
+  expect(screen.queryByRole("link", { name: "Download engineering CV" })).not.toBeInTheDocument();
 });
 
 test("persists Spanish and updates the document language and metadata", async () => {
@@ -50,7 +50,7 @@ test("persists Spanish and updates the document language and metadata", async ()
   expect(document.documentElement).toHaveAttribute("lang", "es");
   expect(document.title).toContain("Consultor");
   expect(localStorage.getItem("language")).toBe("es");
-  expect(screen.getByRole("link", { name: "Descargar CV de ingeniería" })).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "Ver trayectoria profesional (PDF)" })).toBeInTheDocument();
 });
 
 test("discloses case studies and closes mobile navigation with Escape", async () => {

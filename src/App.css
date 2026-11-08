@@ -114,21 +114,56 @@ h2{font-size:clamp(30px,3.1vw,44px);line-height:1.2}
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 24px 60px;
+  gap: 28px 48px;
 }
+.proof-name { color: var(--paper-muted); margin-bottom: 10px; }
 .compact-about .profile-description { max-width: 56ch; margin-top: 12px; }
-.about-actions { display: grid; justify-items: start; gap: 12px; }
-.contact-steps {
+.proof-companies {
+  border-inline-start: 1px solid #c5cbbd;
+  padding-inline-start: 32px;
+}
+.proof-companies .eyebrow { color: var(--paper-muted); }
+.proof-companies ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 26px;
-  color: var(--muted);
-  padding-inline-start: 22px;
-  margin: 20px 0 0;
-  font-size: 14px;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 16px;
 }
-.contact-steps li::marker { color: var(--accent); font-family: var(--mono); }
-.copy-status:empty { min-height: 0; }
+.proof-companies li {
+  padding: 4px 10px;
+  border: 1px solid #c5cbbd;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.proof-companies .text-link { font-size: 14px; color: var(--paper-muted); }
+.client-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 6vw, 76px);
+  padding: clamp(24px, 5vw, 64px);
+  border: 1px solid #394730;
+  border-radius: 10px;
+  background: radial-gradient(ellipse at top left, #243421, #141b13 72%);
+}
+.client-contact h2 { font-size: clamp(30px, 3.8vw, 54px); }
+.client-contact .contact-description { margin-top: 16px; max-width: 46ch; }
+.client-contact-actions { display: grid; gap: 10px; }
+.client-contact .contact-linkedin {
+  border-color: #607854;
+  color: var(--text);
+}
+.client-contact .contact-linkedin:hover { background: #263823; }
+.client-contact .email-row {
+  padding-top: 0;
+  min-width: 0;
+}
+.client-contact .email-row button { width: 44px; height: 44px; }
+.client-contact .copy-status { min-height: 0; }
+.client-contact .copy-status:empty { margin-top: -10px; }
 
 @media (max-width: 1000px) {
   .work-card .work-card-body { padding-inline: 16px; }
@@ -140,5 +175,12 @@ h2{font-size:clamp(30px,3.1vw,44px);line-height:1.2}
   .hero .hero-art { display: none; }
   .hero-kicker { margin-bottom: 14px; }
   .compact-about { grid-template-columns: 1fr; }
+  .proof-companies {
+    border-inline-start: 0;
+    border-top: 1px solid #c5cbbd;
+    padding-inline-start: 0;
+    padding-top: 20px;
+  }
+  .client-contact { grid-template-columns: 1fr; }
   .work-card .work-art { height: 145px; }
 }

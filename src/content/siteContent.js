@@ -3,19 +3,17 @@ export const profile = {
   email: "eduzsantillan@gmail.com",
   linkedin: "https://www.linkedin.com/in/eduzuniga/",
   github: "https://github.com/eduzsantillan",
-  engineeringCV: "/assets/Eduardo_Zuniga_Senior_Backend_Engineer.pdf",
   consultingCV: "/assets/Eduardo_Zuniga_Software_Consulting.pdf",
 };
 
 const en = {
   nav: {
-    consulting: "Services", work: "Projects", experience: "About", contact: "Contact", cta: "Let’s talk",
+    consulting: "Services", work: "Projects", experience: "Experience", contact: "Contact", cta: "Let’s talk",
     menu: "Open navigation", close: "Close navigation", home: "Eduardo Zuñiga — home",
     language: "Switch to Spanish",
   },
   common: {
-    project: "Discuss your project", cv: "Download engineering CV",
-    consultingCV: "Consulting profile", skip: "Skip to content", back: "Back to top",
+    project: "Discuss your project", skip: "Skip to content", back: "Back to top",
   },
   hero: {
     eyebrow: "Software development consulting",
@@ -57,20 +55,18 @@ const en = {
     ],
   },
   experience: {
-    title: "Work directly with me",
-    description: "I’m Eduardo, a software engineer with over 10 years of experience, including work at Ontop, SURA, and Martin Bros.",
-    roleCta: "Discuss an engineering role",
+    title: "10 years building software",
+    description: "Payments, identity, and business systems in production.",
+    companies: "Experience at",
+    profile: "View professional profile (PDF)",
   },
   contact: {
-    title: "Have a project in mind?",
-    description: "Tell me what you need and we’ll define the first deliverable together.",
-    roleTitle: "Hiring a backend engineer?",
-    roleDescription: "Share a few details about the role and your team.",
-    email: "Email me about your project",
-    roleEmail: "Discuss a role",
+    title: "What do you need to build?",
+    description: "Tell me what you want to launch or improve. We’ll discuss what to deliver first and how it fits with your team.",
+    email: "Write me an email",
+    linkedin: "Find me on LinkedIn",
     projectSubject: "Software development project",
-    roleSubject: "Senior backend engineering opportunity",
-    steps: ["Define scope", "Build", "Hand over"],
+    projectBody: "Hi Eduardo,\n\nI’d like to discuss a project.\n\nWhat we need to solve:\nWhat we use today:\nTarget timeline:\n",
     copy: "Copy email address",
     copied: "Email copied",
     copyFailed: "Copy unavailable. Use the email link.",
@@ -85,13 +81,12 @@ const en = {
 
 const es = {
   nav: {
-    consulting: "Servicios", work: "Proyectos", experience: "Sobre mí", contact: "Contacto", cta: "Conversemos",
+    consulting: "Servicios", work: "Proyectos", experience: "Experiencia", contact: "Contacto", cta: "Conversemos",
     menu: "Abrir navegación", close: "Cerrar navegación", home: "Eduardo Zuñiga — inicio",
     language: "Cambiar a inglés",
   },
   common: {
-    project: "Hablemos de tu proyecto", cv: "Descargar CV de ingeniería",
-    consultingCV: "Perfil de consultoría", skip: "Ir al contenido", back: "Volver al inicio",
+    project: "Hablemos de tu proyecto", skip: "Ir al contenido", back: "Volver al inicio",
   },
   hero: {
     eyebrow: "Consultoría en desarrollo de software",
@@ -133,20 +128,18 @@ const es = {
     ],
   },
   experience: {
-    title: "Trabaja directamente conmigo",
-    description: "Soy Eduardo, ingeniero de software con más de 10 años de experiencia, incluyendo proyectos en Ontop, SURA y Martin Bros.",
-    roleCta: "Conversemos sobre una vacante",
+    title: "10 años desarrollando software",
+    description: "Pagos, identidad y sistemas empresariales en producción.",
+    companies: "Experiencia en",
+    profile: "Ver trayectoria profesional (PDF)",
   },
   contact: {
-    title: "¿Tienes un proyecto en mente?",
-    description: "Cuéntame qué necesitas y definimos juntos qué entregar primero.",
-    roleTitle: "¿Buscas un ingeniero backend?",
-    roleDescription: "Cuéntame sobre la vacante y tu equipo.",
-    email: "Escríbeme sobre tu proyecto",
-    roleEmail: "Conversar sobre un puesto",
+    title: "¿Qué necesitas construir?",
+    description: "Cuéntame qué quieres lanzar o mejorar. Revisamos qué entregar primero y cómo integrarlo al trabajo de tu equipo.",
+    email: "Escríbeme por correo",
+    linkedin: "Encuéntrame en LinkedIn",
     projectSubject: "Proyecto de desarrollo de software",
-    roleSubject: "Oportunidad de ingeniería backend senior",
-    steps: ["Definir alcance", "Construir", "Entregar"],
+    projectBody: "Hola Eduardo,\n\nQuiero conversar sobre un proyecto.\n\nQué necesitamos resolver:\nQué sistema usamos hoy:\nPlazo aproximado:\n",
     copy: "Copiar correo electrónico",
     copied: "Correo copiado",
     copyFailed: "No se pudo copiar. Usa el enlace de correo.",
@@ -162,8 +155,7 @@ const es = {
 export const translations = { en, es };
 export const getContent = (language) => translations[language] || translations.en;
 
-export const inquiryLink = (language, intent = "project") => {
-  const { contact } = getContent(language);
-  const subject = intent === "role" ? contact.roleSubject : contact.projectSubject;
-  return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}`;
+export const inquiryLink = (language) => {
+  const { projectSubject, projectBody } = getContent(language).contact;
+  return `mailto:${profile.email}?subject=${encodeURIComponent(projectSubject)}&body=${encodeURIComponent(projectBody)}`;
 };

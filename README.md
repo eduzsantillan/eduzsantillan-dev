@@ -25,7 +25,7 @@ The build includes the existing ESLint checks. This JavaScript project has no se
 - `src/content/siteContent.js`: English and Spanish copy, contact addresses, professional links and CV paths.
 - `src/context/LanguageContext.js`: English default, saved language preference and localized document metadata.
 - Anchors: `#home`, `#experience`, `#consulting`, `#work`, `#process`, `#contact`. Legacy section anchors remain available.
-- `/?intent=role#contact` and `/?intent=project#contact`: preselect the inquiry type.
+- `#contact`: opens the project contact section. The old inquiry URLs also land here.
 - `public/assets/`: finalized engineering and consulting PDFs.
 - `public/index.html`: initial metadata, canonical URL and Person structured data.
 - `public/social-card.svg`: editable source for the sharing image.
